@@ -1,6 +1,6 @@
-# Day 1: AI Theory & Terminology
+# AI Theory & Terminology
 
-> **Type:** 📖 Theory | **Time:** ~3 hours | **Code:** None (pure theory)
+> **Type:** 📖 Theory | **Code:** None (pure theory, with conceptual C# examples)
 
 ---
 
@@ -15,25 +15,44 @@
 
 ## 📖 What is Artificial Intelligence?
 
-AI is a broad field. Here is where our focus area sits:
+**Definition:** Technology that allows computers to perform tasks that typically require human intelligence. Instead of rigidly following pre-programmed instructions, an AI system relies on vast amounts of data to emulate cognitive tasks.
 
+**Examples of AI in Daily Life:**
+1. **Pattern Recognition:** Algorithms identifying numeric sequences, predicting your next keystroke, or analyzing your streaming habits to recommend the perfect movie.
+2. **Speech Recognition:** Voice assistants like Siri, Alexa, or the advanced ChatGPT Voice mode understanding natural language effortlessly.
+3. **Image Analysis:** Automated traffic cameras reading blurred or fast-moving number plates, or smartphone cameras actively detecting faces.
+
+### The AI Family Tree
+
+AI is a vast overarching term. Here is where our focus area sits and how the subfields interact:
+
+```mermaid
+graph TD
+    AI[Artificial Intelligence]
+    AI --> ML[Machine Learning]
+    AI --> GenAI[Generative AI ◄── THIS IS WHERE WE BUILD]
+    
+    ML --> SL[Supervised Learning]
+    ML --> USL[Unsupervised Learning]
+    ML --> DL[Deep Learning]
+
+    DL --> CNN[CNNs - Images]
+    DL --> RNN[RNNs - Sequences]
+    DL --> TR[Transformers ◄── OUR FOCUS]
+    
+    TR --> B[Encoder-only - BERT]
+    TR --> G[Decoder-only - GPT]
+    
+    GenAI --> LLM[Large Language Models - GPT-4, Claude]
+    GenAI --> SLM[Small Language Models - Phi-3, Llama 3]
+    GenAI --> IMG[Image Generation - DALL-E]
 ```
-Artificial Intelligence (AI)
-├── Machine Learning (ML)
-│   ├── Supervised Learning (Classification, Regression)
-│   ├── Unsupervised Learning (Clustering, Dimensionality Reduction)
-│   └── Deep Learning
-│       ├── Convolutional Neural Networks (CNNs) — Images
-│       ├── Recurrent Neural Networks (RNNs) — Sequences
-│       └── Transformers ◄── THIS IS OUR FOCUS
-│           ├── Encoder-only (BERT) — Understanding text
-│           ├── Decoder-only (GPT) — Generating text
-│           └── Encoder-Decoder (T5) — Translation, Summarization
-└── Generative AI ◄── THIS IS WHERE WE BUILD
-    ├── Large Language Models (LLMs) — GPT-4, Claude, Gemini
-    ├── Small Language Models (SLMs) — Phi-3, Llama 3.1 8B
-    └── Image Generation — DALL-E, Stable Diffusion
-```
+
+To dive deeply into these subfields, please review the dedicated detailed guides before proceeding:
+
+1. **[Machine Learning (ML) Deep Dive](./Machine-Learning-Deep-Dive.md)** (Supervised, Unsupervised, Reinforcement Learning)
+2. **[Deep Learning & Neural Networks](./Deep-Learning-and-Neural-Networks.md)** (FNN, RNN, CNN, Transformers)
+3. **[Generative AI, NLP & Computer Vision](./Generative-AI-and-NLP.md)** (LLMs, RLHF, Vision Models)
 
 ---
 
@@ -174,14 +193,14 @@ builder.Services.Configure<KestrelServerOptions>(options =>
 ```
 [System Prompt]        ← Sets behavior (uses tokens!)
 [Chat History]         ← Previous messages (grows over time!)
-[Retrieved Context]    ← RAG content (Week 5)
+[Retrieved Context]    ← RAG content
 [User's Current Query] ← The actual question
 [Model's Response]     ← Generated output
 ─────────────────────
 Total must be < Context Window size
 ```
 
-> **⚠️ Key Insight:** As conversation history grows, you consume more and more of the context window. This is why **state management** (Week 1, Day 5) is critical.
+> **⚠️ Key Insight:** As conversation history grows, you consume more and more of the context window. This is why **state management** is critical.
 
 ---
 
@@ -269,26 +288,41 @@ Example: *"The **cat** sat on the mat because **it** was tired."*
 
 ---
 
-## 🗺️ The AI Application Stack
+## 🗺️ The AI Application Stack in .NET
 
-As an AI Engineer, you won't train models. You'll **build applications on top of them:**
+As an AI Engineer, you won't focus on training models. You'll **build applications on top of them:**
 
-```
-┌─────────────────────────────────────┐
-│      Your .NET AI Application       │  ◄── YOU BUILD THIS
-├─────────────────────────────────────┤
-│      Orchestration Layer            │  ◄── Semantic Kernel (Week 2)
-│      (Prompt chaining, Plugins)     │
-├─────────────────────────────────────┤
-│      Data Layer                     │  ◄── Embeddings + Vector DBs (Weeks 3-4)
-│      (RAG, Embeddings, Vectors)     │
-├─────────────────────────────────────┤
-│      Foundation Model (LLM/SLM)    │  ◄── GPT-4o, Llama, Phi (Pre-trained)
-│      API Access Only               │
-├─────────────────────────────────────┤
-│      Infrastructure                 │  ◄── Azure, Local, Ollama
-│      (Hosting, Scaling, Monitoring) │
-└─────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph Your Solutions
+        App[Your .NET AI Application<br/>Blazor, ASP.NET Core, MAUI]
+    end
+
+    subgraph Abstraction & Orchestration
+        SK[Semantic Kernel<br/>Microsoft.Extensions.AI]
+        App --> SK
+    end
+    
+    subgraph Data & Context Layer
+        RAG[RAG, Prompts, Memories]
+        VDB[(Vector Databases<br/>Qdrant, Redis, CosmosDB)]
+        SK <--> RAG
+        RAG <--> VDB
+    end
+
+    subgraph Foundation Models
+        LLM((Pre-trained LLMs & SLMs<br/>GPT-4o, Llama 3, Phi-3))
+        embed((Embedding Models))
+    end
+    
+    subgraph Infrastructure
+        Host[Azure API, Local Ollama, Hugging Face]
+    end
+
+    SK <--> LLM
+    SK <--> embed
+    LLM --- Host
+    embed --- Host
 ```
 
 ---
@@ -326,4 +360,4 @@ As an AI Engineer, you won't train models. You'll **build applications on top of
 
 ## ➡️ Next
 
-Continue to **[Day 2: Prompt Engineering Basics](../Day-02-Prompt-Engineering-Basics/README.md)**
+Continue to **[Prompt Engineering Basics](../Day-02-Prompt-Engineering-Basics/README.md)**
