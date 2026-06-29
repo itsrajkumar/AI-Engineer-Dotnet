@@ -13,7 +13,19 @@
 
 ---
 
-## 📖 The Two RAG Pipelines
+## 📖 The Evolution of RAG (2023 vs 2026)
+
+| Concept | 2023 (Standard RAG) | 2026 (Agentic/Advanced RAG) |
+|---------|---------------------|----------------------------|
+| **Orchestration** | Linear Pipeline (Retrieve → Generate) | Agentic RAG (Agents plan, search, verify) |
+| **Retrieval** | Single Vector Search | Hybrid (Vector + Keyword + GraphRAG) |
+| **Chunking** | Fixed Size | Contextual Chunking, Late Chunking |
+| **Verification** | Prompt engineering | Self-RAG, Corrective RAG (CRAG) |
+| **Documents** | Flat list | Hierarchical (RAPTOR) |
+
+---
+
+## 📖 The Two RAG Pipelines (Standard Model)
 
 ### Pipeline 1: Document Ingestion (Offline)
 
@@ -46,6 +58,23 @@
                     │              │    │  Context ONLY │
                     └──────────────┘    └──────────────┘
 ```
+
+---
+
+## 🚀 Advanced RAG Paradigms (2026 Standards)
+
+### 1. Agentic RAG
+The dominant paradigm in 2026. Instead of a hardcoded pipeline, an **Agent** acts as the orchestrator. The agent is given search tools and decides *when* to search, *how many times* to search, and *how* to synthesize the results. If the retrieved context is poor, the agent loops back and searches again.
+
+### 2. GraphRAG
+Created by Microsoft, GraphRAG extracts entities and their relationships from documents to build a Knowledge Graph. It allows LLMs to answer global questions like *"What are the main themes across all these documents?"* which traditional vector RAG fails at.
+
+### 3. RAPTOR (Recursive Abstractive Processing for Tree-Organized Retrieval)
+Documents are clustered and summarized hierarchically. When a user asks a high-level question, the system retrieves the high-level summaries. When asking detailed questions, it retrieves the leaf nodes.
+
+### 4. CRAG (Corrective RAG) & Self-RAG
+**CRAG:** An evaluator grades the retrieved documents. If they are irrelevant, the system performs a web search or rewrites the query.
+**Self-RAG:** The LLM generates the answer and simultaneously outputs "reflection tokens" grading its own generation for hallucination and relevance, self-correcting in real-time.
 
 ---
 

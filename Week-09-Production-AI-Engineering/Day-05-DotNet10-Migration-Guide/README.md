@@ -16,6 +16,8 @@
 
 ## 📖 What Changed in .NET 10 for AI?
 
+> 💡 **June 2026 Update:** .NET 10 is now GA (released November 2025). Visual Studio 2026 fully supports .NET 10 out of the box, with built-in MAF debugging tools. .NET 11 previews are already starting, but .NET 10 is the current LTS.
+
 ```
 .NET 8/9 (Legacy)                  .NET 10 (Current)
 ──────────────────────             ──────────────────────
@@ -68,23 +70,23 @@ Semantic Kernel only               MEAI + SK + MAF ✅
 + var result = response.Result; // strongly typed!
 ```
 
-### 4. Function Calling
+### 4. Function Calling & Agents (SK → MAF)
 
 ```diff
-// BEFORE: SK-only function calling
+// BEFORE: SK-only function calling and planners
 - kernel.Plugins.AddFromType<MyPlugin>();
 - var settings = new OpenAIPromptExecutionSettings
 - {
 -     FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
 - };
 
-// AFTER: MEAI function calling (no SK required)
+// AFTER: Microsoft Agent Framework (MAF 1.0 GA)
 + var tools = new[] { AIFunctionFactory.Create(MyMethod, "name", "desc") };
-+ IChatClient client = new ChatClientBuilder(innerClient)
-+     .UseFunctionInvocation()
-+     .Build();
-+ var result = await client.GetResponseAsync(prompt,
-+     new ChatOptions { Tools = tools });
++ var agent = new ChatAgent(chatClient, "RetailAgent")
++ {
++     Tools = new List<AITool>(tools)
++ };
++ var result = await agent.InvokeAsync(prompt);
 ```
 
 ### 5. Middleware Pipeline

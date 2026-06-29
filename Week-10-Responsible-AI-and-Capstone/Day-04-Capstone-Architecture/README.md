@@ -80,7 +80,7 @@ cd src/RetailAssistant.API
 dotnet add package Microsoft.Extensions.AI
 dotnet add package Microsoft.Extensions.AI.OpenAI
 dotnet add package Microsoft.Extensions.AI.Ollama
-dotnet add package Microsoft.SemanticKernel
+dotnet add package Microsoft.Agents.Framework
 dotnet add package Azure.Identity
 dotnet add package OpenTelemetry.Extensions.Hosting
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
@@ -141,7 +141,7 @@ builder.Services.AddChatClient(pipeline => pipeline
     .Use<CostTrackingMiddleware>()
     .UseFunctionInvocation()
     .Use(new OpenAIClient(builder.Configuration["OpenAI:ApiKey"]!)
-        .AsChatClient("gpt-4o-mini")));
+        .AsChatClient("gpt-5.4-mini")));
 
 // =====================================================
 // Application Services

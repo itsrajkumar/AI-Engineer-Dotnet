@@ -30,7 +30,33 @@ Output Formatting               Meta-Prompting
 
 ---
 
-## 🧠 Pattern 1: ReAct (Reasoning + Acting)
+## 🧠 Pattern 1: Reasoning Models & DSPy (2026 Advances)
+
+### Prompting Reasoning Models (o3, GPT-5.5, Llama 4 Maverick)
+With the advent of advanced reasoning models, traditional prompting changes significantly:
+- **DO NOT** use "think step by step" or "Chain-of-Thought" (CoT) prompts. The model does this natively.
+- **DO NOT** use few-shot prompting for complex logic; it constrains the model's internal reasoning.
+- **DO** provide clear rubrics, constraints, and edge cases.
+- **DO** use XML tags to structure the input clearly.
+
+### DSPy (Algorithmic Prompt Optimization)
+Instead of manually tweaking prompts, the industry has shifted to **DSPy**. DSPy treats prompts as code that can be compiled and optimized algorithmically. You write a program defining the flow, provide a metric, and DSPy automatically finds the optimal prompt instructions.
+
+---
+
+## ⚙️ Pattern 2: Prompt Caching (Cost Optimization)
+
+Prompt Caching allows you to reuse large contexts (like system prompts, large documents, or few-shot examples) across multiple API calls, saving 41-80% in costs and dramatically reducing latency.
+
+**How it works:**
+Providers cache tokens based on exact prefix matches. Always structure prompts as:
+1. Static System Instructions
+2. Static Context/Tools (Cached)
+3. Dynamic User Input (Not cached)
+
+---
+
+## 🛠️ Pattern 3: ReAct (Reasoning + Acting)
 
 **Interleave thinking and tool-use** in a structured loop.
 
@@ -68,7 +94,7 @@ var systemPrompt = """
 
 ---
 
-## 🌳 Pattern 2: Tree-of-Thought
+## 🌳 Pattern 4: Tree-of-Thought
 
 **Explore multiple reasoning paths** and pick the best one. Great for complex problems.
 
@@ -135,7 +161,7 @@ var response = await chatClient.GetResponseAsync(new List<ChatMessage>
 
 ---
 
-## 🔄 Pattern 3: Self-Consistency
+## 🔄 Pattern 5: Self-Consistency
 
 **Ask the same question multiple times** and take the majority answer. Reduces hallucination.
 
@@ -180,7 +206,7 @@ var answer = await SelfConsistentQuery(chatClient,
 
 ---
 
-## 🔗 Pattern 4: Prompt Chaining
+## 🔗 Pattern 6: Prompt Chaining
 
 **Break complex tasks into sequential prompts**, where each step builds on the previous.
 

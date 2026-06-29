@@ -4,6 +4,8 @@
 
 ---
 
+> ⚠️ **Update (June 2026):** Semantic Kernel has been deprecated and succeeded by Microsoft Agent Framework (MAF) 1.0 GA. The concepts below remain valuable for understanding AI orchestration patterns. See the MAF migration notes at the end of this lesson.
+
 ## 🎯 Learning Objectives
 
 - Create prompt templates as reusable functions
@@ -37,7 +39,7 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var apiKey = config["OpenAI:ApiKey"]!;
 
 var kernel = Kernel.CreateBuilder()
-    .AddOpenAIChatCompletion("gpt-4o-mini", apiKey)
+    .AddOpenAIChatCompletion("gpt-5.4-mini", apiKey)
     .Build();
 
 // =====================================================
@@ -174,6 +176,12 @@ var summary = await kernel.InvokeAsync(
 - Store prompts in files for better separation of concerns
 - `config.json` sets default temperature, max tokens, and variable descriptions
 - File-based prompts are **hot-reloadable** — change the prompt without recompiling!
+
+---
+
+## 🚀 Migration to MAF (2026)
+
+In **Microsoft Agent Framework (MAF)**, the concept of Semantic Functions (prompt templates) is largely handled via standard C# string interpolation combined with `IChatClient`, or via MAF's lightweight `AgentPrompt` templates which use a standard Handlebars implementation rather than SK's custom `{{$var}}` syntax. MAF removes the need for `config.json` files by using standard C# record types or data annotations for settings.
 
 ---
 

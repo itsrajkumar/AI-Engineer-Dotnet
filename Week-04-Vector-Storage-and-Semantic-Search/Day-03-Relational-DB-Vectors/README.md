@@ -26,6 +26,15 @@ docker run -d --name pgvector-db `
 
 ---
 
+## 🚀 pgvector v0.9.x Features (2026 Updates)
+
+The latest pgvector versions introduced massive performance and storage improvements:
+1. **Iterative Scans:** HNSW indexes now support returning results iteratively without a strict `LIMIT`, making it possible to stream results efficiently or combine with complex SQL `WHERE` clauses.
+2. **`halfvec` (16-bit floats):** Store vectors as `halfvec` instead of `vector` to cut memory and storage exactly in half with almost zero accuracy loss.
+3. **Matryoshka Support:** You can index and search on a truncated portion of the vector (e.g., the first 256 dimensions of a 1536-dimensional vector) to save immense storage and memory.
+
+---
+
 ## 💻 Code Sample
 
 ```csharp
@@ -62,13 +71,13 @@ await using (var cmd = conn.CreateCommand())
             text TEXT NOT NULL,
             source VARCHAR(255),
             category VARCHAR(100),
-            embedding vector(1536),  -- pgvector column type!
+            embedding halfvec(1536),  -- v0.9.x: using halfvec to cut storage in half!
             created_at TIMESTAMP DEFAULT NOW()
         );
         
         -- Create HNSW index for fast similarity search 
         CREATE INDEX ON document_chunks 
-            USING hnsw (embedding vector_cosine_ops);
+            USING hnsw (embedding halfvec_cosine_ops);
         """;
     await cmd.ExecuteNonQueryAsync();
 }

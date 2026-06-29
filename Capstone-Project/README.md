@@ -1,16 +1,17 @@
 # 🏆 Capstone Project: AI-Powered Retail Assistant
 
-> A portfolio-worthy project that combines everything from the 6-week roadmap.
+> A portfolio-worthy project that combines everything from the 14-week roadmap.
 
 ---
 
 ## 📋 Overview
 
-The **AI-Powered Retail Assistant** is a .NET 8 Web API that:
-1. **Answers store policy questions** using RAG (Retrieval-Augmented Generation)
-2. **Looks up orders** using AI function calling/plugins
-3. **Processes returns and refunds** with human-in-the-loop approval
-4. **Handles complex multi-step requests** using Semantic Kernel agents
+The **AI-Powered Retail Assistant** is a .NET 10 Web API that:
+1. **Answers store policy questions** using Advanced Agentic RAG and GraphRAG
+2. **Looks up orders** using AI function calling via MEAI (v10.7.0)
+3. **Processes returns and refunds** with human-in-the-loop approval and Guardrails
+4. **Handles complex multi-step requests** using Microsoft Agent Framework (MAF)
+5. **Connects to external tools** using Model Context Protocol (MCP) and A2A
 
 ---
 
@@ -18,14 +19,16 @@ The **AI-Powered Retail Assistant** is a .NET 8 Web API that:
 
 | Layer | Technology |
 |-------|-----------|
-| API | ASP.NET Core 8 Minimal APIs |
-| AI Orchestration | Microsoft Semantic Kernel |
-| AI Provider | OpenAI / Azure OpenAI |
-| Vector Database | PostgreSQL + pgvector |
-| Relational DB | PostgreSQL + EF Core |
-| Real-time | SignalR (for streaming) |
+| API | ASP.NET Core 10 Minimal APIs |
+| AI Orchestration | Microsoft Agent Framework (MAF) 1.0 GA |
+| AI Provider | MEAI 10.7.0 (Azure OpenAI / Foundry Local) |
+| Vector Database | PostgreSQL + pgvector / MongoDB 8.3 |
+| Relational DB | PostgreSQL + EF Core 10 |
+| Real-time | Server-Sent Events (SSE) / SignalR |
+| Integration | MCP v1.4.0 / A2A Protocol v1.0 |
+| Observability | OpenTelemetry / LangFuse |
 | Containerization | Docker + Docker Compose |
-| Testing | xUnit + NSubstitute |
+| Testing | xUnit + DeepEval |
 
 ---
 
@@ -66,7 +69,7 @@ Client Request
          ▼
 ┌──────────────────┐
 │  Retail Agent    │
-│  (SK Kernel)     │
+│  (MAF Agent)     │
 │                  │
 │  Decides:        │
 │  • Is this a     │──► RAG Pipeline ──► Vector DB (pgvector)
@@ -97,7 +100,7 @@ src/
 ### Phase 1: Foundation
 - [ ] Create solution structure with Clean Architecture
 - [ ] Set up PostgreSQL with Docker
-- [ ] Configure Semantic Kernel with DI
+- [ ] Configure MAF and MEAI 10.7.0 with DI
 - [ ] Create chat endpoint
 
 ### Phase 2: RAG

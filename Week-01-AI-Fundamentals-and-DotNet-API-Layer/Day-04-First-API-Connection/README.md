@@ -6,7 +6,7 @@
 
 ## 🎯 Learning Objectives
 
-- Build a complete .NET 8 console app that communicates with an LLM
+- Build a complete .NET 10 console app that communicates with an LLM
 - Understand the request/response lifecycle of an LLM API call
 - Handle errors, rate limiting, and retries properly
 - Parse and use the API response in a meaningful way
@@ -51,8 +51,8 @@ cd "d:\Study\AI-Engineer\AI-Engineer-With-.Net\Week-01-AI-Fundamentals-and-DotNe
 dotnet new console -n FirstLLMCall
 cd FirstLLMCall
 
-dotnet add package Microsoft.Extensions.AI --prerelease
-dotnet add package Microsoft.Extensions.AI.OpenAI --prerelease
+dotnet add package Microsoft.Extensions.AI -v 10.7.0
+dotnet add package Microsoft.Extensions.AI.OpenAI -v 10.7.0
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
 dotnet add package Microsoft.Extensions.DependencyInjection
 dotnet add package Microsoft.Extensions.Logging.Console
@@ -95,7 +95,7 @@ var apiKey = config["OpenAI:ApiKey"]
     ?? throw new InvalidOperationException("Set OpenAI:ApiKey in user secrets");
 
 services.AddChatClient(builder => builder
-    .Use(new OpenAIClient(apiKey).AsChatClient("gpt-4o-mini")));
+    .Use(new OpenAIClient(apiKey).AsChatClient("gpt-5.4-mini")));
 
 var serviceProvider = services.BuildServiceProvider();
 var chatClient = serviceProvider.GetRequiredService<IChatClient>();

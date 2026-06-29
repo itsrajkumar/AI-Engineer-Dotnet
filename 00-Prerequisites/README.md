@@ -1,13 +1,13 @@
 # 📋 Prerequisites — Environment Setup
 
-Before starting the 10-week roadmap, ensure your development environment is properly configured.
+Before starting the 14-week roadmap, ensure your development environment is properly configured.
 
 ---
 
 ## ✅ Checklist
 
-- [ ] .NET 8 SDK installed
-- [ ] IDE configured (Visual Studio 2022 / VS Code / Rider)
+- [ ] .NET 10 SDK (LTS) installed
+- [ ] IDE configured (Visual Studio 2026 / VS Code / Rider)
 - [ ] Azure account with OpenAI access (or OpenAI API key)
 - [ ] Git installed
 - [ ] Docker Desktop installed (for vector databases)
@@ -19,7 +19,7 @@ Before starting the 10-week roadmap, ensure your development environment is prop
 
 | Guide | Description |
 |-------|-------------|
-| [.NET 8 Setup](./dotnet-8-setup.md) | Install .NET 8 SDK and verify installation |
+| [.NET 10 Setup](./dotnet-10-setup.md) | Install .NET 10 SDK and verify installation |
 | [Azure Account Setup](./azure-account-setup.md) | Create Azure account, deploy OpenAI resource |
 | [Environment Setup](./environment-setup.md) | Configure IDE, extensions, and developer tools |
 | [Tools & Extensions](./tools-and-extensions.md) | Recommended tools, NuGet packages, and extensions |
@@ -40,9 +40,14 @@ Before starting the 10-week roadmap, ensure your development environment is prop
 
 ### Option C: Local Models (Free, No API Keys)
 1. [Ollama](https://ollama.com/) installed locally
-2. Models: a current Llama-family model, `phi-4-mini`, and `nomic-embed-text` or `bge-m3`
+2. Models: `llama4-scout`, `deepseek-v4-flash`, `mistral-small-4`, `phi-4-mini`, and `bge-m3`
+3. Foundry Local v1.2 GA (optional, for enterprise simulation)
 
 > **💡 Tip:** You can start with Option B or C and migrate to Azure later. The code samples support all three options.
+
+### Option D: Python (For Weeks 11-12 Only)
+1. Python 3.12+ (Only needed if you choose to run the Hugging Face reference scripts in Weeks 11-12)
+2. Hugging Face CLI
 
 ---
 
@@ -52,23 +57,27 @@ These packages will be used throughout the roadmap:
 
 ```xml
 <!-- AI Abstraction Layer -->
-<PackageReference Include="Microsoft.Extensions.AI" Version="9.0.0-preview.*" />
-<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.0.0-preview.*" />
+<PackageReference Include="Microsoft.Extensions.AI" Version="10.7.0" />
+<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.7.0" />
+<PackageReference Include="Microsoft.Extensions.AI.Ollama" Version="10.7.0" />
 
 <!-- Azure OpenAI SDK -->
 <PackageReference Include="Azure.AI.OpenAI" Version="2.*" />
 
-<!-- Microsoft Semantic Kernel -->
-<PackageReference Include="Microsoft.SemanticKernel" Version="1.*" />
-<PackageReference Include="Microsoft.SemanticKernel.Connectors.OpenAI" Version="1.*" />
+<!-- Microsoft Agent Framework (Replaces Semantic Kernel) -->
+<PackageReference Include="Microsoft.AgentFramework" Version="1.0.0" />
+<PackageReference Include="Microsoft.AgentFramework.OpenAI" Version="1.0.0" />
 
 <!-- Vector Databases -->
-<PackageReference Include="MongoDB.Driver" Version="2.*" />
-<PackageReference Include="Npgsql" Version="8.*" />
+<PackageReference Include="MongoDB.Driver" Version="3.*" />
+<PackageReference Include="Npgsql" Version="9.*" />
+
+<!-- Protocols -->
+<PackageReference Include="ModelContextProtocol.AspNetCore" Version="1.4.0" />
 
 <!-- Utilities -->
-<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.*" />
-<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.*" />
+<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.*" />
+<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.*" />
 ```
 
 ---

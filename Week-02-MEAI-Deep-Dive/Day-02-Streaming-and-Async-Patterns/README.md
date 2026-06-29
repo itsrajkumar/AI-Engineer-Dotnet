@@ -52,7 +52,7 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var apiKey = config["OpenAI:ApiKey"]!;
 
 IChatClient chatClient = new OpenAIClient(apiKey)
-    .AsChatClient("gpt-4o-mini");
+    .AsChatClient("gpt-5.4-mini");
 
 // =====================================================
 // Example 1: Basic Streaming

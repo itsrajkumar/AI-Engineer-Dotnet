@@ -44,7 +44,18 @@ Regression = code change broke   Regression = model update broke
 
 ---
 
-## 💻 Code Sample: Evaluation Harness
+## 🛠️ Industry Standard Evaluation Frameworks (2026)
+
+While building your own harness (shown below) is great for learning, production teams use specialized frameworks:
+
+- **DeepEval:** The industry standard for LLM evaluation. Offers 20+ out-of-the-box metrics (G-Eval, RAGAS, Hallucination) and integrates directly into CI/CD pipelines.
+- **Promptfoo:** A fast, developer-friendly CLI tool for testing prompts and models against predefined assertions. Excellent for regression testing.
+- **Arize Phoenix:** Provides both LLM observability (traces) and evaluation in one platform.
+- **Agentic Evaluation:** A new 2026 paradigm where an autonomous Agent (rather than a simple LLM judge) interacts with your application over multiple turns to test edge cases, state management, and tool use robustness.
+
+---
+
+## 💻 Code Sample: Custom Evaluation Harness
 
 ```csharp
 using Microsoft.Extensions.AI;
@@ -230,4 +241,4 @@ await evaluator.RunSuiteAsync(testCases);
 
 ## ➡️ Week Complete!
 
-Continue to **[Week 4: Microsoft Semantic Kernel](../../Week-04-Semantic-Kernel-Orchestrator/README.md)** 🎉
+Continue to **[Week 4: Microsoft Semantic Kernel](../../Week-02-Semantic-Kernel-Orchestrator/README.md)** 🎉

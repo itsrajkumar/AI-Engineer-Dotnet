@@ -126,6 +126,32 @@ app.MapPost("/api/analyze", async (
 .WithName("Analyze")
 .WithOpenApi();
 
+// =====================================================
+// Endpoint 4: Agent Execution (MAF 1.0 GA)
+// =====================================================
+app.MapPost("/api/agent/run", async (
+    AgentRequest request,
+    IChatClient chatClient,
+    CancellationToken ct) =>
+{
+    // Create an agent dynamically per request or pull from DI
+    var agent = new ChatAgent(chatClient, "WebAgent")
+    {
+        Instructions = "You are an AI assistant integrated into a web API. Keep answers concise."
+        // Tools = { ... }
+    };
+    
+    // In a real app, you would restore thread state using request.SessionId
+    var response = await agent.InvokeAsync(request.Message, cancellationToken: ct);
+    
+    return Results.Ok(new AgentResponse(
+        AgentName: agent.Name,
+        Response: response.Content
+    ));
+})
+.WithName("AgentRun")
+.WithOpenApi();
+
 app.Run();
 
 // =====================================================
@@ -150,6 +176,9 @@ record ContentAnalysis(
     string[] Topics,
     string Language,
     float ConfidenceScore);
+
+record AgentRequest(string Message, string? SessionId = null);
+record AgentResponse(string AgentName, string? Response);
 ```
 
 ---

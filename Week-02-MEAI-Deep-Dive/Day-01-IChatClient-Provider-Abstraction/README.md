@@ -39,7 +39,7 @@
     ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
     │   OpenAI     │    │ Azure OpenAI │    │    Ollama    │
     │ .AsChatClient│    │ .AsChatClient│    │ .AsChatClient│
-    │ ("gpt-5-mini")│    │ ("gpt-5")   │    │ ("phi4-mini")│
+    │ ("gpt-5.4-mini")│  │ ("gpt-5.4") │    │ ("llama4-scout")│
     └──────────────┘    └──────────────┘    └──────────────┘
 ```
 
@@ -55,7 +55,7 @@
 ILogger logger = new ConsoleLogger();           // Logging
 IDbConnection db = new SqlConnection(connStr);  // Database
 IChatClient ai = new OpenAIClient(key)          // AI ✨
-    .AsChatClient("gpt-5-mini");
+    .AsChatClient("gpt-5.4-mini");
 ```
 
 ---
@@ -70,9 +70,9 @@ cd "d:\Study\AI-Engineer\AI-Engineer-With-.Net\Week-02-MEAI-Deep-Dive\Day-01-ICh
 dotnet new console -n ProviderSwapDemo
 cd ProviderSwapDemo
 
-dotnet add package Microsoft.Extensions.AI
-dotnet add package Microsoft.Extensions.AI.OpenAI
-dotnet add package Microsoft.Extensions.AI.Ollama
+dotnet add package Microsoft.Extensions.AI -v 10.7.0
+dotnet add package Microsoft.Extensions.AI.OpenAI -v 10.7.0
+dotnet add package Microsoft.Extensions.AI.Ollama -v 10.7.0
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
 dotnet add package Microsoft.Extensions.DependencyInjection
 dotnet add package Microsoft.Extensions.Hosting
@@ -110,7 +110,7 @@ switch (provider.ToLower())
         var apiKey = builder.Configuration["OpenAI:ApiKey"]
             ?? throw new InvalidOperationException("Set OpenAI:ApiKey");
         builder.Services.AddChatClient(
-            new OpenAIClient(apiKey).AsChatClient("gpt-4o-mini"));
+            new OpenAIClient(apiKey).AsChatClient("gpt-5.4-mini"));
         break;
 
     case "azure":
@@ -120,13 +120,13 @@ switch (provider.ToLower())
         builder.Services.AddChatClient(
             new Azure.AI.OpenAI.AzureOpenAIClient(
                 new Uri(endpoint), credential)
-            .AsChatClient("gpt-5"));
+            .AsChatClient("gpt-5.4-deployment"));
         break;
 
     case "ollama":
         // Free, local, no API key!
         builder.Services.AddChatClient(
-            new OllamaChatClient(new Uri("http://localhost:11434"), "phi4-mini"));
+            new OllamaChatClient(new Uri("http://localhost:11434"), "llama4-scout"));
         break;
 }
 

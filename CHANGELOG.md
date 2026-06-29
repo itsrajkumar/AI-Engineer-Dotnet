@@ -4,6 +4,86 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [4.0.0] - 2026-06-29
+
+### Added — 🆕 Major Expansion: 10 Weeks → 14 Weeks (70 Days)
+
+#### New Week 11: Deep ML Foundations & Neural Network Architecture
+- Day 1: ML Fundamentals Refresher
+- Day 2: Neural Networks from Scratch (TorchSharp)
+- Day 3: Transformer Architecture deep dive
+- Day 4: Build a Mini-Transformer in C#
+- Day 5: Modern Architectures (MoE, Mamba, ViT)
+
+#### New Week 12: Model Training, Fine-Tuning & Alignment
+- Day 1: Training Pipelines (tokenization, data loaders)
+- Day 2: Hands-On Fine-Tuning (LoRA, QLoRA, DoRA, Unsloth)
+- Day 3: Alignment (RLHF, DPO, ORPO, GRPO, Constitutional AI)
+- Day 4: Distillation & Compression (GPTQ, AWQ, GGUF, QAT, ONNX)
+- Day 5: Synthetic Data & Evaluation
+
+#### New Week 13: Advanced RAG, GraphRAG & Reasoning
+- Day 1: GraphRAG Deep Dive
+- Day 2: Agentic RAG (Self-RAG, Corrective RAG)
+- Day 3: Reasoning Model Patterns (GPT-5.x Thinking)
+- Day 4: Advanced Retrieval (RAPTOR, ColBERT, Matryoshka)
+- Day 5: Knowledge Management (Kernel Memory)
+
+#### New Week 14: AI Platform Engineering
+- Day 1: AI Gateway Patterns & FinOps
+- Day 2: Advanced Agents (A2A, Agent Mesh)
+- Day 3: ML.NET, ONNX Runtime & On-Device AI
+- Day 4: AI Infrastructure & Scaling
+- Day 5: Capstone v2 Full-Stack Platform
+
+### Changed — 2026 Mid-Year Refresh
+
+#### Semantic Kernel Deprecation
+- Week 4: Added MAF migration notices, SK deprecated April 2026
+- Week 8: Restructured around MAF 1.0 GA
+
+#### Model References Updated
+- gpt-4o-mini → gpt-5.4-mini throughout
+- Added GPT-5.5/5.6, Claude 5, Gemini 3.5, Llama 4, DeepSeek V4
+
+#### Package Versions Updated
+- Microsoft.Extensions.AI: 9.5.0-preview → 10.7.0
+- ModelContextProtocol: 0.1.0-preview → v1.4.0
+- .NET: Preview → 10 GA LTS
+
+#### New Technologies Added
+- A2A Protocol v1.0, MCP 2026-07-28 spec, Foundry Local v1.2
+- OWASP Agentic Top 10, DeepEval, Promptfoo, PyRIT
+- GraphRAG, Agentic RAG, RAPTOR, ColBERT, Matryoshka
+- TorchSharp, ML.NET, ONNX Runtime
+
+#### Bug Fixes
+- Fixed W1 D5 navigation (pointed to SK instead of MEAI)
+- Fixed W3 D5 broken link
+- Fixed .NET 8 references in Prerequisites
+- Fixed Capstone '6-week' reference
+
+### Statistics
+- **Weeks:** 10 → 14
+- **Days:** 50 → 70
+- **New days:** 20
+- **Files updated:** ~70
+- **Files created:** ~24
+
+---
+
+## [3.1.0] - 2026-06-15
+
+### Added
+- MCP Day-04 deep-dive with .NET MCP SDK examples
+- Expanded MAF multi-agent coverage
+- Additional cross-references between weeks
+
+### Changed
+- Minor content fixes across all weeks
+
+---
+
 ## [3.0.0] - 2026-03-25
 
 ### Added — 🆕 Major Expansion: 7 Weeks → 10 Weeks (50 Days)

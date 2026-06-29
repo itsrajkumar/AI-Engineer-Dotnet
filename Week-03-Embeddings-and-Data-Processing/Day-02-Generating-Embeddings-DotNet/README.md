@@ -16,7 +16,13 @@
 ## 💻 Code Sample
 
 ```csharp
+// Packages required (v10.7.0):
+// - Microsoft.Extensions.AI
+// - Microsoft.Extensions.AI.OpenAI
+// - Microsoft.Extensions.VectorData
+
 using Microsoft.Extensions.AI;
+using Microsoft.Extensions.VectorData;
 using Microsoft.Extensions.Configuration;
 using OpenAI;
 
@@ -102,6 +108,7 @@ Console.WriteLine("\n✅ Embedding generation complete!");
 ## 🔑 Key Takeaways
 
 - `IEmbeddingGenerator` is the abstraction — works with OpenAI, Azure, Ollama
+- `Microsoft.Extensions.VectorData` provides standard abstractions for interacting with vector databases (covered in Week 6)
 - Batch generation is **cheaper and faster** than individual calls
 - The resulting `float[]` is what you store in vector databases (Week 4)
 - Cosine similarity measures how "close" two embeddings are

@@ -159,6 +159,34 @@ public record DocumentChunk
 
 ---
 
+## 🚀 2026 Advanced Chunking Patterns
+
+### 1. Contextual Chunking (Anthropic Pattern)
+Even with overlap, chunks lose global context. For example, a chunk might say "The company saw a 20% revenue increase" but lose the context that the company is "Acme Corp" and the quarter is "Q3 2025".
+
+**Contextual Chunking** fixes this by passing the *entire document* to an LLM along with the chunk, asking it to prepend context:
+1. Break document into chunks.
+2. For each chunk, call the LLM: *"Here is the whole document. Here is a chunk. Write a 1-sentence context summary to prepend to this chunk."*
+3. Embed `[Context] + [Chunk]`.
+This dramatically improves retrieval accuracy (up to 67% improvement), albeit with higher initial ingestion costs.
+
+### 2. Late Chunking (Jina AI)
+In traditional chunking, you split text *then* embed. This strips cross-chunk semantic relationships.
+**Late Chunking** passes the entire document through the embedding model's transformer layers first, preserving global attention. Only at the very last pooling step does it separate the embeddings into chunk-sized boundaries. 
+
+### 3. Microsoft.KernelMemory
+Instead of writing chunking code manually, the **Kernel Memory** project (now heavily integrated with MAF) handles OCR, document partitioning, chunking, and embedding automatically.
+```csharp
+var memory = new KernelMemoryBuilder()
+    .WithOpenAIDefaults(apiKey)
+    .Build<MemoryServerless>();
+
+// Automatically chunks, embeds, and stores!
+await memory.ImportDocumentAsync("company_handbook.pdf", documentId: "doc001");
+```
+
+---
+
 ## 📖 Chunking Decision Guide
 
 ```

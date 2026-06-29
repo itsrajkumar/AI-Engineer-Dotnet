@@ -4,6 +4,8 @@
 
 ---
 
+> ⚠️ **Update (June 2026):** Semantic Kernel has been deprecated and succeeded by Microsoft Agent Framework (MAF) 1.0 GA. The concepts below remain valuable for understanding AI orchestration patterns. See the MAF migration notes at the end of this lesson.
+
 ## 🎯 Learning Objectives
 
 - Enable automatic function calling (tool use)
@@ -46,7 +48,7 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 
 var kernel = Kernel.CreateBuilder()
-    .AddOpenAIChatCompletion("gpt-4o-mini", config["OpenAI:ApiKey"]!)
+    .AddOpenAIChatCompletion("gpt-5.4-mini", config["OpenAI:ApiKey"]!)
     .Build();
 
 // Register our plugin from Day 3
@@ -121,6 +123,12 @@ The AI is now executing YOUR C# code. Consider:
 - What if it calls a function in an infinite loop?
 
 **Solution: Filters** (See Week 6, Day 4: Human-in-the-Loop)
+
+---
+
+## 🚀 Migration to MAF (2026)
+
+In **Microsoft Agent Framework (MAF)**, the `FunctionChoiceBehavior` enum concept still exists but is configured through `ChatOptions` when making calls via `IChatClient`, rather than via an `OpenAIPromptExecutionSettings` object. MAF's tool calling is intrinsically tied to `Microsoft.Extensions.AI` middleware, specifically `.UseFunctionInvocation()`, which automatically executes tool calls without needing a full `Kernel` orchestrator.
 
 ---
 

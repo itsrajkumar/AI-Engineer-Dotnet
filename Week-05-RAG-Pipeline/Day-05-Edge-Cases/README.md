@@ -90,7 +90,9 @@ public static class PromptGuard
 }
 ```
 
-### 3. Answer Quality Validation
+### 3. Answer Quality Validation (Hallucination Detection)
+
+In 2026, **Hallucination Detection** is critical. You can use an LLM-as-a-judge to verify groundedness (as shown below), or rely on specialized evaluation frameworks like **DeepEval**, **Promptfoo**, or **Arize Phoenix**.
 
 ```csharp
 public class AnswerValidator
@@ -115,7 +117,17 @@ public class AnswerValidator
 }
 ```
 
-### 4. Logging & Telemetry
+```
+
+### 4. Advanced Confidence Scoring
+
+Instead of just YES/NO, modern systems generate **Confidence Scores**. The LLM is asked to output a score from 0.0 to 1.0 based on how well the context answers the query. If the score is below 0.7, the system can fallback to a web search tool (Agentic RAG) or ask the user for clarification.
+
+### 5. Microsoft.KernelMemory
+
+If you use **Microsoft.KernelMemory**, it automatically handles many of these edge cases. It has built-in mechanisms for groundedness checking, answering with "I don't know" when context is insufficient, and abstracting away the complex fallback logic.
+
+### 6. Logging & Telemetry
 
 ```csharp
 public class InstrumentedRagService

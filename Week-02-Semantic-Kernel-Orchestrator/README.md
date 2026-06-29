@@ -4,6 +4,14 @@
 
 ---
 
+> ⚠️ **IMPORTANT UPDATE (June 2026): Semantic Kernel is Deprecated**
+>
+> Microsoft Semantic Kernel has been succeeded by **Microsoft Agent Framework (MAF) 1.0 GA**. While SK was foundational from 2023-2025, MAF is now the primary orchestration framework for .NET.
+>
+> The concepts taught in this week (Plugins, Templates, Memory) are still highly relevant as they translate directly to MAF concepts. We preserve this week for legacy maintenance, but all new projects should use MAF (covered later in the course).
+
+---
+
 ## 🎯 Learning Objectives
 
 By the end of this week, you will:

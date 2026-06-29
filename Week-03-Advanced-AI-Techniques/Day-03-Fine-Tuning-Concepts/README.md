@@ -92,9 +92,16 @@ Step 4: Use fine-tuned model via same IChatClient!
 
 ---
 
-## 📖 LoRA: Parameter-Efficient Fine-Tuning
+## 📖 Parameter-Efficient Fine-Tuning (2026 Advances)
 
-**LoRA (Low-Rank Adaptation)** is the modern approach to fine-tuning:
+**LoRA (Low-Rank Adaptation)** remains the foundation, but several 2026 techniques have emerged:
+
+- **DoRA (Weight-Decomposed Low-Rank Adaptation):** Outperforms standard LoRA by separating magnitude and direction. It bridges the gap between full fine-tuning and PEFT.
+- **GRPO (Group Relative Policy Optimization):** DeepSeek's efficiency breakthrough for reasoning models. It eliminates the need for a separate critic model, reducing memory by 50%.
+- **ORPO (Odds Ratio Preference Optimization):** Combines Supervised Fine-Tuning (SFT) and alignment into a single step, bypassing RLHF and DPO.
+- **KTO (Kahneman-Tversky Optimization):** Alignment without paired preference data. You only need to mark outputs as "thumbs up" or "thumbs down".
+- **Model Distillation:** Training a smaller model (e.g., 8B) using the outputs and reasoning traces of a massive model (e.g., GPT-5.5 or Llama 4 Maverick).
+- **Synthetic Data Generation:** Using frontier models to generate millions of high-quality training examples (e.g., Microsoft's Auto-Prompt approach).
 
 ```
 Full Fine-Tuning:              LoRA Fine-Tuning:
@@ -116,7 +123,7 @@ Can degrade general ability    Preserves general ability
 
 // OpenAI fine-tuned model:
 IChatClient client = new OpenAIClient(apiKey)
-    .AsChatClient("ft:gpt-4o-mini-2024-07-18:my-org::abc123");
+    .AsChatClient("ft:gpt-5.4-mini:my-org::abc123");
 
 // Local fine-tuned model via Ollama:
 IChatClient localClient = new OllamaChatClient(

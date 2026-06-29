@@ -168,6 +168,28 @@ public class OrderPlugin
 
 ---
 
+## 🛡️ Agent Security & Red Teaming (2026 Standards)
+
+Relying solely on "Human-in-the-Loop" for safety is not enough. You must actively defend against advanced attacks.
+
+### 1. OWASP Top 10 for Agentic Applications
+The OWASP foundation released a specific Top 10 for Agents in 2026. The most critical vulnerabilities are:
+- **Agentic Prompt Injection:** Attackers hijack the agent's goal via hidden text in a retrieved document.
+- **Over-Privileged Tools:** Giving an agent `DeleteCustomer(id)` instead of `RequestCustomerDeletion(id)`.
+- **Unbounded Loops:** An agent gets stuck in an infinite retry loop, burning API credits.
+
+### 2. Crescendo-Style Attacks
+In a **Crescendo Attack**, the attacker doesn't immediately ask the agent to do something malicious. Instead, they slowly build trust over 20-30 turns, gradually steering the agent's logic until it willingly bypasses safety filters. 
+**Defense:** Monitor the *sentiment and intent trajectory* of the conversation, not just individual prompts, and enforce hard context-window resets for sensitive operations.
+
+### 3. Red-Teaming Tools
+Before deploying an agent, you must test its defenses using automated red-teaming tools:
+- **PyRIT (Python Risk Identification Tool):** Microsoft's open-source tool for finding risks in generative AI.
+- **Garak:** An LLM vulnerability scanner that tests for prompt injection and hallucination.
+- **DeepTeam:** A 2026 multi-agent red-teaming framework where *attacker agents* actively try to trick your *defender agent*.
+
+---
+
 ## ➡️ Next
 
 Continue to **[Day 5: Capstone Project](../Day-05-Capstone-Project/README.md)**

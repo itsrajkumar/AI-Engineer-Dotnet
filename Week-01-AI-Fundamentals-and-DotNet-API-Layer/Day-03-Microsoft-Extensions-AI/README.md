@@ -108,14 +108,14 @@ dotnet new console -n ExtensionsAIDemo
 cd ExtensionsAIDemo
 
 # Add NuGet packages
-dotnet add package Microsoft.Extensions.AI --prerelease
-dotnet add package Microsoft.Extensions.AI.OpenAI --prerelease
+dotnet add package Microsoft.Extensions.AI -v 10.7.0
+dotnet add package Microsoft.Extensions.AI.OpenAI -v 10.7.0
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
 
 # Initialize user secrets
 dotnet user-secrets init
 dotnet user-secrets set "OpenAI:ApiKey" "sk-your-key-here"
-dotnet user-secrets set "OpenAI:ModelId" "gpt-4o-mini"
+dotnet user-secrets set "OpenAI:ModelId" "gpt-5.4-mini"
 ```
 
 ### Program.cs
@@ -139,7 +139,7 @@ var config = new ConfigurationBuilder()
 
 var apiKey = config["OpenAI:ApiKey"] 
     ?? throw new InvalidOperationException("OpenAI:ApiKey not configured. Run: dotnet user-secrets set \"OpenAI:ApiKey\" \"sk-your-key\"");
-var modelId = config["OpenAI:ModelId"] ?? "gpt-4o-mini";
+var modelId = config["OpenAI:ModelId"] ?? "gpt-5.4-mini";
 
 // Create the AI client using Microsoft.Extensions.AI abstraction
 // Note: We program against IChatClient, NOT OpenAIClient directly
@@ -214,9 +214,9 @@ Console.WriteLine("\n✅ Day 3 Complete! You've used Microsoft.Extensions.AI suc
 6. 🆕 **`.NET 10:`** Use `GetResponseAsync()` as the simpler API (replaces `CompleteAsync` in some scenarios)
 7. 🆕 **`.NET 10:`** Use `ChatClientBuilder` middleware for caching, telemetry, and retries
 
-### 🆕 .NET 10 Middleware Preview
+### 🆕 .NET 10 Middleware
 
-In .NET 10, `Microsoft.Extensions.AI` supports composable middleware pipelines (covered in detail in [Week 7, Day 3](../../Week-07-Responsible-AI-and-Production/Day-03-Structured-Output-and-Middleware/README.md)):
+In .NET 10, `Microsoft.Extensions.AI` supports composable middleware pipelines (covered in detail in [Week 2, Day 5](../../Week-02-MEAI-Deep-Dive/Day-05-Middleware-Pipelines/README.md)):
 
 ```csharp
 // .NET 10: Compose AI behaviors like ASP.NET Core middleware
@@ -225,12 +225,12 @@ builder.Services.AddChatClient(pipeline => pipeline
     .UseDistributedCache()        // Cache identical prompts
     .UseFunctionInvocation()      // Auto function/tool calling
     .Use(new OpenAIClient(apiKey)
-        .AsChatClient("gpt-5-mini")));
+        .AsChatClient("gpt-5.4-mini")));
 ```
 
 ### 🆕 .NET 10: Structured Output
 
-Get strongly-typed C# objects directly from AI (covered in [Week 7, Day 3](../../Week-07-Responsible-AI-and-Production/Day-03-Structured-Output-and-Middleware/README.md)):
+Get strongly-typed C# objects directly from AI (covered in [Week 2, Day 3](../../Week-02-MEAI-Deep-Dive/Day-03-Structured-Output/README.md)):
 
 ```csharp
 // Instead of parsing free-form text...
@@ -247,16 +247,16 @@ Console.WriteLine(result.Result?.Name);  // Strongly typed!
 ```csharp
 // OpenAI
 IChatClient chatClient = new OpenAIClient(apiKey)
-    .AsChatClient("gpt-4o-mini");
+    .AsChatClient("gpt-5.4-mini");
 
 // Azure OpenAI (just change the constructor!)
 IChatClient chatClient = new AzureOpenAIClient(
         new Uri(endpoint), new AzureKeyCredential(key))
-    .AsChatClient("gpt-4o-deployment");
+    .AsChatClient("gpt-5.4-deployment");
 
 // Ollama (local, free!)
 IChatClient chatClient = new OllamaChatClient(
-    new Uri("http://localhost:11434"), "llama3.1");
+    new Uri("http://localhost:11434"), "llama4-scout");
 ```
 
 **Your application code using `IChatClient` doesn't change at all!**

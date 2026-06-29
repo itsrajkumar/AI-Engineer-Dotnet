@@ -4,6 +4,8 @@
 
 ---
 
+> ⚠️ **Update (June 2026):** Semantic Kernel's planners and the `FunctionChoiceBehavior` shown here are now considered legacy for building agents. **Microsoft Agent Framework (MAF)** is the recommended path. This lesson has been updated to show how these concepts migrate to MAF.
+
 ## 🎯 Learning Objectives
 
 - Use `FunctionChoiceBehavior.Auto()` for step-by-step planning
@@ -13,16 +15,18 @@
 
 ---
 
-## 📖 Evolution of Planning in SK
+## 📖 Evolution of Planning (.NET Ecosystem)
 
-```
+```text
 SK v1.0: StepwisePlanner (deprecated)
   → Explicit planning step, generated plan as text
 
-SK v1.x+: FunctionChoiceBehavior.Auto() (current)
-  → LLM natively decides which functions to call
-  → More reliable, leverages model's built-in function calling
-  → This is what GPT-4o's "tool use" feature does
+SK v1.x: FunctionChoiceBehavior.Auto() (legacy agent pattern)
+  → LLM natively decides which functions to call via tool calling
+
+MAF 1.0 GA (2026): Agent-Native Architecture (Current)
+  → Replaces SK for agent orchestration. Uses standard IChatClient under the hood.
+  → Built-in state management, checkpointing, and human-in-the-loop.
 ```
 
 ---
@@ -159,6 +163,27 @@ Agent Internal Steps:
    → Calls GetCurrentDateTime() → "Monday, March 16, 2026"
 
 6. Now I can compose my answer!
+```
+
+---
+
+## 🚀 Migration to MAF (2026)
+
+In MAF, you don't configure raw execution settings on a `ChatHistory` or `Kernel`. Instead, you define an `Agent` and equip it with tools via `AIFunctionFactory`:
+
+```csharp
+// MAF 1.0 GA Agent creation
+var inventoryTool = AIFunctionFactory.Create(new InventoryPlugin().GetHighestStockItem, "GetHighestStockItem");
+var priceTool = AIFunctionFactory.Create(new InventoryPlugin().GetProductPrice, "GetProductPrice");
+
+var agent = new ChatAgent(chatClient, "RetailAgent")
+{
+    Instructions = "You are a retail assistant...",
+    Tools = { inventoryTool, priceTool }
+};
+
+// MAF handles the loop, state, and tool execution automatically!
+var response = await agent.InvokeAsync("I want to buy 3 of the highest stock electronics.");
 ```
 
 ---

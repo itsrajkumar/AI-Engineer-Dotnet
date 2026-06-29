@@ -64,8 +64,8 @@ cd "d:\Study\AI-Engineer\AI-Engineer-With-.Net\Week-01-AI-Fundamentals-and-DotNe
 dotnet new console -n ChatWithRoles
 cd ChatWithRoles
 
-dotnet add package Microsoft.Extensions.AI --prerelease
-dotnet add package Microsoft.Extensions.AI.OpenAI --prerelease
+dotnet add package Microsoft.Extensions.AI -v 10.7.0
+dotnet add package Microsoft.Extensions.AI.OpenAI -v 10.7.0
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
 
 dotnet user-secrets init
@@ -94,7 +94,7 @@ var apiKey = config["OpenAI:ApiKey"]
     ?? throw new InvalidOperationException("Set OpenAI:ApiKey in user secrets");
 
 IChatClient chatClient = new OpenAIClient(apiKey)
-    .AsChatClient("gpt-4o-mini");
+    .AsChatClient("gpt-5.4-mini");
 
 // =====================================================
 // Define the AI's persona via System Prompt
@@ -109,7 +109,7 @@ var systemPrompt = """
     - You occasionally mention relevant NuGet packages
     
     YOUR RULES:
-    1. Always suggest modern C# (12+) and .NET 8+ approaches
+    1. Always suggest modern C# 14 and .NET 10 approaches
     2. When showing code, include XML doc comments
     3. If asked about non-.NET topics, briefly answer but relate back to .NET
     4. Format responses with clear headings and bullet points
@@ -312,4 +312,4 @@ You now understand:
 - ✅ Making LLM API calls from C#
 - ✅ Chat history and roles
 
-**Next:** [Week 2: Microsoft Semantic Kernel — The Orchestrator](../../Week-02-Semantic-Kernel-Orchestrator/README.md)
+**Next:** [Week 2: Microsoft.Extensions.AI Deep Dive](../../Week-02-MEAI-Deep-Dive/README.md)

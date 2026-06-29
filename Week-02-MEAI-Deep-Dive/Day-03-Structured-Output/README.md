@@ -42,7 +42,7 @@ using OpenAI;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 IChatClient chatClient = new OpenAIClient(config["OpenAI:ApiKey"]!)
-    .AsChatClient("gpt-4o-mini");
+    .AsChatClient("gpt-5.4-mini");
 
 // =====================================================
 // Example 1: Simple Structured Output

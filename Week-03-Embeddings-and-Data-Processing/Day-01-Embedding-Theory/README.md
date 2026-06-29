@@ -41,16 +41,18 @@ float[] embedding = await Embed(text);       // 1536 numbers, captures full mean
 
 ---
 
-## 📐 Dimensionality
+## 📐 Dimensionality (2026 Standards)
 
 | Model | Dimensions | Array Size |
 |-------|-----------|-----------|
-| text-embedding-3-small | 1536 | `float[1536]` |
 | text-embedding-3-large | 3072 | `float[3072]` |
-| text-embedding-ada-002 | 1536 | `float[1536]` |
-| nomic-embed-text (Ollama) | 768 | `float[768]` |
+| bge-m3 (multilingual) | 1024 | `float[1024]` |
+| qwen3-embedding-8b | 4096 | `float[4096]` |
+| cohere-embed-v4 (multimodal)| 1024 | `float[1024]` |
+| jina-embeddings-v3 | 1024 | `float[1024]` |
+| zembed-1 (32K+ context) | 1536 | `float[1536]` |
 
-Why 1536 dimensions? Each dimension represents a different "aspect" of meaning. More dimensions = more nuance, but higher cost.
+Each dimension represents a different "aspect" of meaning. More dimensions = more nuance, but higher memory footprint.
 
 ---
 
@@ -108,6 +110,19 @@ Used to measure "closeness" of two vectors:
 - **Cosine Similarity** (most common): Measures the angle between vectors (0 = unrelated, 1 = identical meaning)
 - **Euclidean Distance**: Straight-line distance between points
 - **Dot Product**: Similar to cosine but affected by vector magnitude
+
+---
+
+## 🚀 2026 Embedding Advancements
+
+### 1. Matryoshka Embeddings
+Modern models (like `text-embedding-3`, `bge-m3`, `jina-embeddings-v3`) are trained with Matryoshka Representation Learning. This means the most important information is front-loaded in the vector. You can **truncate** a 3072-dimensional vector down to 256 dimensions and only lose 1-3% in retrieval accuracy, saving massive storage costs.
+
+### 2. Binary Quantization
+Vectors are traditionally stored as `float32`. Binary quantization converts them to 1-bit values (0 or 1), reducing memory usage by **32x** and speeding up search. When combined with Matryoshka, you can run billion-scale vector searches in memory on standard hardware.
+
+### 3. Late Interaction (ColBERT)
+Traditional embeddings compress an entire document into a single vector. **Late Interaction (ColBERT)** creates a vector for *every token* in the document and the query, then compares them all. This is significantly more accurate for complex queries, though it requires more storage.
 
 ---
 

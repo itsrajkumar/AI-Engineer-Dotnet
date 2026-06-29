@@ -25,6 +25,17 @@ Neither keyword search nor semantic search is perfect alone:
 
 ---
 
+## 🚀 2026 Standard: Hybrid Search + Reranking
+
+In modern AI engineering (2026), **Hybrid Search is no longer optional**. Pure semantic search fails on exact keyword lookups (like SKUs or IDs), and pure keyword search fails on semantic intent. 
+
+Furthermore, the standard pipeline now requires a **Reranking** step:
+1. **Retrieve (Fast but imprecise):** Fetch the top 100 results using Hybrid Search (BM25 + Semantic Vector).
+2. **Rerank (Slow but extremely precise):** Pass the 100 results to a **Cross-Encoder** or **ColBERT reranker**. The reranker scores exactly how well each document answers the query.
+3. **Return:** Send the top 5 reranked results to the LLM.
+
+---
+
 ## 💻 Code Sample
 
 ```csharp
@@ -91,6 +102,11 @@ async Task<List<SearchResult>> HybridSearchAsync(
             KeywordScore = reader.GetFloat(3)
         });
     }
+    
+    // In 2026, we MUST rerank these results using a Cross-Encoder or ColBERT model!
+    // Example (conceptual):
+    // return await crossEncoder.RerankAsync(query, results, topN: limit);
+
     return results;
 }
 

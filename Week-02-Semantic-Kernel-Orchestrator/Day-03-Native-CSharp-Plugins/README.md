@@ -4,6 +4,8 @@
 
 ---
 
+> ⚠️ **Update (June 2026):** Semantic Kernel has been deprecated and succeeded by Microsoft Agent Framework (MAF) 1.0 GA. The concepts below remain valuable for understanding AI orchestration patterns. See the MAF migration notes at the end of this lesson.
+
 ## 🎯 Learning Objectives
 
 - Write a C# class as a Semantic Kernel plugin
@@ -111,7 +113,7 @@ using Microsoft.SemanticKernel;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 
 var kernel = Kernel.CreateBuilder()
-    .AddOpenAIChatCompletion("gpt-4o-mini", config["OpenAI:ApiKey"]!)
+    .AddOpenAIChatCompletion("gpt-5.4-mini", config["OpenAI:ApiKey"]!)
     .Build();
 
 // Register the plugin with the Kernel
@@ -157,6 +159,14 @@ public double CalculateDiscount(
     return Math.Round(originalPrice * (1 - discountPercent / 100), 2);
 }
 ```
+
+---
+
+## 🚀 Migration to MAF (2026)
+
+In **Microsoft Agent Framework (MAF)**, the `[KernelFunction]` attribute is replaced by the simpler `AIFunctionFactory.Create()` approach (which you saw in Week 2), or by using the `[AIFunction]` attribute in MAF 1.0. 
+
+MAF plugins are simply standard C# classes registered in the DI container. The `[Description]` attribute is still used heavily by the underlying `Microsoft.Extensions.AI` abstractions to tell the LLM how to use your methods.
 
 ---
 

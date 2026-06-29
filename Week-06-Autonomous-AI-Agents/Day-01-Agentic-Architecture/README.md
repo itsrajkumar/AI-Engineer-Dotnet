@@ -101,11 +101,14 @@ User → Orchestrator Agent
 | Orchestration | Semantic Kernel `Kernel` | `AgentPipeline`, `GroupChat` |
 | External Tools | N/A | Model Context Protocol (MCP) |
 
-### 🆕 Microsoft Agent Framework (MAF)
+### 🆕 Microsoft Agent Framework (MAF 1.0 GA)
+
+The agentic ecosystem evolved rapidly: **AutoGen** (2023) → **AG2** (2025) → **Microsoft Agent Framework (MAF)** (2026).
+MAF 1.0 GA (April 2026) is the official, enterprise-ready successor to Semantic Kernel for building agents in .NET. It integrates perfectly with `Microsoft.Extensions.AI`.
 
 ![MAF Architecture](../../assets/maf-architecture.png)
 
-In the v2 course, **Microsoft Agent Framework** replaces SK Planners as the primary way to build agents:
+In the v4 course, **Microsoft Agent Framework** replaces Semantic Kernel as the primary way to build agents:
 
 ```
                     ┌─────────────────────────────────────┐
@@ -138,6 +141,15 @@ In the v2 course, **Microsoft Agent Framework** replaces SK Planners as the prim
 | State | `ChatHistory` | Thread-based state management |
 
 > 📚 **Deep dive:** See [Week 7, Day 5: .NET 10 Migration Guide](../../Week-07-Responsible-AI-and-Production/Day-05-DotNet10-Migration-Guide/README.md) for code examples of MAF agents.
+
+---
+
+## 🌐 The 2026 Agent Ecosystem
+
+While we focus on MAF in .NET, you should be aware of the broader ecosystem:
+- **OpenAI Agents SDK:** OpenAI's official framework for building native agents, tightly coupled with the Swarm API.
+- **Google ADK (Agent Development Kit):** Google's Vertex-integrated agent framework.
+- **A2A Protocol v1.0:** The "Agent-to-Agent" protocol, governed by the Linux Foundation and adopted by 150+ organizations, allowing a MAF agent to securely communicate with a Google ADK agent.
 
 ---
 

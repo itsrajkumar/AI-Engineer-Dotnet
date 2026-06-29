@@ -8,8 +8,9 @@
 
 ## 🎯 Learning Objectives
 
-- Install and run Ollama for local AI model inference
-- Use Docker Model Runner for containerized model serving
+- Install and run Ollama and Foundry Local v1.2 for local AI model inference
+- Understand GGUF quantization for efficient local inference
+- Use vLLM for high-throughput containerized model serving
 - Connect local models to .NET via `IChatClient`
 - Build a hybrid fallback strategy (local + cloud)
 - Understand when local models are the right choice
@@ -42,24 +43,31 @@ Cloud Models:                     Local Models:
 
 ---
 
-## 💻 Setting Up Ollama
+## 💻 Setting Up Local Providers (2026)
 
+### 1. Ollama (Best for Development)
 ```powershell
 # Install Ollama (Windows)
 winget install Ollama.Ollama
 
-# Start the server
-ollama serve
-
-# Pull popular models
-ollama pull phi4-mini          # 3.8B params, fast, Microsoft
-ollama pull llama3.2:3b        # 3B params, Meta
-ollama pull phi4-mini-vision   # Vision-capable
-ollama pull nomic-embed-text   # Embedding model (for Week 5)
+# Pull latest 2026 models
+ollama pull phi4-mini          # Microsoft's efficient 3.8B model
+ollama pull llama4-scout       # Meta's 17B MoE (runs fast locally)
+ollama pull deepseek-v4-flash  # Highly optimized reasoning model
+ollama pull bge-m3             # 2026 standard for embeddings
 
 # Test it
-ollama run phi4-mini "Hello from .NET!"
+ollama run llama4-scout "Hello from .NET 10!"
 ```
+
+### 2. Foundry Local v1.2 (Enterprise Simulation)
+Microsoft's Azure AI Foundry Local allows you to simulate the Azure OpenAI environment on your local machine. It provides the exact same endpoints and token metrics as the cloud version, but runs models locally using ONNX Runtime.
+
+### 3. vLLM (Production Local Hosting)
+For serving local models in production (e.g., in your own Kubernetes cluster), **vLLM** has become the industry standard due to PagedAttention and continuous batching.
+
+### 4. GGUF Quantization
+To run large models on consumer hardware, models are downloaded in **GGUF** format. This format supports extreme quantization (down to 1-bit or 2-bit), allowing massive models like Llama 4 Scout to fit comfortably in 16GB of RAM.
 
 ---
 
@@ -86,7 +94,7 @@ IChatClient localClient = new OllamaChatClient(
 // Provider 2: OpenAI (cloud, paid)
 // =====================================================
 IChatClient cloudClient = new OpenAIClient(config["OpenAI:ApiKey"]!)
-    .AsChatClient("gpt-4o-mini");
+    .AsChatClient("gpt-5.4-mini");
 
 // =====================================================
 // Hybrid Strategy: Try local first, fall back to cloud
@@ -162,11 +170,11 @@ Console.WriteLine("\n✅ Local models demo complete!");
 | Model | Params | Size | Best For | Speed |
 |-------|--------|------|----------|-------|
 | **phi4-mini** | 3.8B | ~2GB | General chat, coding | ⚡ Fast |
-| **llama3.2:3b** | 3B | ~2GB | General purpose | ⚡ Fast |
-| **mistral:7b** | 7B | ~4GB | High quality text | 🔷 Medium |
-| **codellama:7b** | 7B | ~4GB | Code generation | 🔷 Medium |
-| **phi4-mini-vision** | 3.8B | ~2GB | Image analysis | ⚡ Fast |
-| **nomic-embed-text** | 137M | ~274MB | Embeddings | ⚡⚡ Very fast |
+| **llama4-scout** | 17B (MoE)| ~6GB | High quality text | ⚡ Fast |
+| **deepseek-v4-flash**| 14B | ~5GB | Coding, logic | ⚡ Fast |
+| **mistral-small-4** | 22B | ~8GB | Complex reasoning | 🔷 Medium |
+| **phi4-multimodal** | 4B | ~2.5GB | Image/audio analysis | ⚡ Fast |
+| **bge-m3** | 567M | ~1.1GB | Embeddings (multilingual)| ⚡⚡ Very fast |
 
 ---
 

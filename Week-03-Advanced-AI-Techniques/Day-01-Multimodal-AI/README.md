@@ -32,13 +32,13 @@ Text → Text                Text    → Text
 
 ### Models with Vision Support
 
-| Model | Vision | Image Gen | Audio | Provider |
-|-------|--------|-----------|-------|----------|
-| GPT-5 | ✅ | ✅ (DALL-E) | ✅ | OpenAI |
-| GPT-4o | ✅ | ❌ | ✅ | OpenAI / Azure |
-| Gemini 2.0 | ✅ | ✅ | ✅ | Google |
-| Phi-4-vision | ✅ | ❌ | ❌ | Ollama (local) |
-| LLaVA | ✅ | ❌ | ❌ | Ollama (local) |
+| Model | Vision | Video | Audio | Provider |
+|-------|--------|-------|-------|----------|
+| GPT-5.5 | ✅ | ✅ | ✅ | OpenAI |
+| GPT-5.4 | ✅ | ✅ | ✅ | OpenAI / Azure |
+| Claude 5 Fable | ✅ | ✅ | ❌ | Anthropic |
+| Gemini 3.5 Pro | ✅ | ✅ | ✅ | Google |
+| Phi-4-multimodal| ✅ | ❌ | ✅ | Microsoft (local) |
 
 ---
 
@@ -140,6 +140,21 @@ Vision requests use more tokens than text:
 | 2048×2048 (high detail) | ~1,600 tokens | ~$0.008 |
 
 > **Tip:** Use `ImageContent` with `detail: "low"` for cheaper analysis when high resolution isn't needed.
+
+---
+
+## 🎥 Video, Audio, and Computer Use (2026 Advances)
+
+Multimodal AI has expanded beyond static images:
+
+### 1. Video Analysis
+Models like Gemini 3.5 Pro and GPT-5.5 can process video files directly. Under the hood, the API typically samples frames (e.g., 1 frame per second) and extracts audio tracks, sending them as interleaved image and audio tokens.
+
+### 2. Audio Processing (Speech-to-Text & Text-to-Speech)
+Modern APIs support native audio tokenization. This allows models to hear tone, emotion, and speaker identity, which is lost in traditional text transcripts.
+
+### 3. Computer Use (Agentic UI Interaction)
+Models like Claude 5 Fable and GPT-5.5 support **Computer Use** APIs. They can look at a screenshot, determine where to click, and output precise X/Y coordinates or actions (Click, Type, Scroll). This allows AI to control web browsers and desktop applications autonomously.
 
 ---
 

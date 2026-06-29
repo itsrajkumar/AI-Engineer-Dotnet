@@ -54,26 +54,28 @@ Finding the exact nearest vector in a million-dimensional space is computational
 
 ---
 
-## 📊 Vector DB Options for .NET
+## 📊 Vector DB Options for .NET (2026 Landscape)
 
-| Database | Type | .NET SDK | Free Tier | Best For |
-|----------|------|----------|-----------|----------|
-| **MongoDB Atlas** | Document + Vector | ✅ MongoDB.Driver | ✅ 512MB | .NET devs who know Mongo |
-| **PostgreSQL (pgvector)** | Relational + Vector | ✅ Npgsql + Pgvector | ✅ Local Docker | SQL devs, hybrid queries |
-| **Qdrant** | Dedicated Vector | ✅ Qdrant.Client | ✅ 1GB cloud | Best pure vector performance |
-| **Azure AI Search** | Enterprise Search | ✅ Azure.Search.Documents | Trial | Enterprise, Azure ecosystem |
-| **Pinecone** | Dedicated Vector | ✅ REST Client | ✅ Limited | Serverless vector search |
-| **ChromaDB** | Embedded Vector | ⚠️ HTTP client | ✅ Local | Quick prototyping |
-| **SQL Server** | Relational | ✅ SqlClient | ✅ Express | When staying in SQL Server |
+| Database | Type | .NET SDK | Notable 2026 Features |
+|----------|------|----------|-----------------------|
+| **MongoDB Atlas v8.3** | Document + Vector | ✅ MongoDB.Driver | Automated embeddings (Voyage-4), flat indexes |
+| **PostgreSQL (pgvector 0.9.x)** | Relational + Vector | ✅ Npgsql + Pgvector | Iterative scans, halfvec, Matryoshka support |
+| **Qdrant** | Dedicated Vector | ✅ Qdrant.Client | TurboQuant (extreme compression) |
+| **Pinecone** | Dedicated Vector | ✅ Pinecone.NET | Nexus architecture, KnowQL query language |
+| **Weaviate** | Dedicated Vector | ✅ Weaviate.Client | v1.38 Engram (agentic memory optimized) |
+| **Milvus 3.0** | Dedicated Vector | ✅ Milvus.Client | Beta release, GPU acceleration, hybrid search |
+| **LanceDB** | Serverless / Embedded | ✅ LanceDB.NET | Disk-based vector search (massively scalable) |
+| **Turbopuffer** | Serverless API | ⚠️ HTTP client | True serverless, built on object storage |
+| **SQL Server** | Relational | ✅ SqlClient | Native vector support in Azure SQL / SQL Server 2025 |
 
 ### Recommendation for .NET Developers
 
 ```
-Already use MongoDB?     → MongoDB Atlas Vector Search (Day 2)
-Already use PostgreSQL?  → pgvector extension (Day 3)
-Need best performance?   → Qdrant
-Need Azure enterprise?   → Azure AI Search
-Just learning?           → Start with pgvector in Docker
+Already use MongoDB?     → MongoDB Atlas Vector Search v8.3
+Already use PostgreSQL?  → pgvector 0.9.x
+Need best performance?   → Qdrant or Pinecone Nexus
+Need embedded/local scale?→ LanceDB
+Serverless API preference?→ Turbopuffer
 ```
 
 ---

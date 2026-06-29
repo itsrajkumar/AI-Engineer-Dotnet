@@ -4,6 +4,8 @@
 
 ---
 
+> ⚠️ **Update (June 2026):** Semantic Kernel has been deprecated and succeeded by Microsoft Agent Framework (MAF) 1.0 GA. The concepts below remain valuable for understanding AI orchestration patterns. See the MAF migration notes at the end of this lesson.
+
 ## 🎯 Learning Objectives
 
 - Implement chat history management in Semantic Kernel
@@ -35,7 +37,7 @@ using Microsoft.SemanticKernel.ChatCompletion;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 
 var kernel = Kernel.CreateBuilder()
-    .AddOpenAIChatCompletion("gpt-4o-mini", config["OpenAI:ApiKey"]!)
+    .AddOpenAIChatCompletion("gpt-5.4-mini", config["OpenAI:ApiKey"]!)
     .Build();
 
 var chatService = kernel.GetRequiredService<IChatCompletionService>();
@@ -108,6 +110,12 @@ Console.WriteLine("\n✅ State management strategies demonstrated!");
 | **Sliding Window** | Fixed (N messages) | Predictable | Loses old context |
 | **Summarization** | Compressed | Moderate | Good approximation |
 | **Hybrid** | Best of both | Balanced | Best overall |
+
+---
+
+## 🚀 Migration to MAF (2026)
+
+In **Microsoft Agent Framework (MAF)**, conversation history is managed seamlessly via `Microsoft.Extensions.AI`'s `ChatHistory` object (which you saw in Week 1). MAF provides advanced built-in state management for complex agentic workflows, including checkpointing, which automatically saves and restores conversation history and agent state to a database (e.g., PostgreSQL or Redis) between turns.
 
 ---
 

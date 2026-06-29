@@ -4,6 +4,8 @@
 
 ---
 
+> ⚠️ **Update (June 2026):** Semantic Kernel has been deprecated and succeeded by Microsoft Agent Framework (MAF) 1.0 GA. The concepts below remain valuable for understanding AI orchestration patterns. See the MAF migration notes at the end of this lesson.
+
 ## 🎯 Learning Objectives
 
 - Initialize the Semantic Kernel `Kernel` object
@@ -25,7 +27,7 @@ var provider = services.BuildServiceProvider();
 
 // Semantic Kernel (same pattern!):
 var builder = Kernel.CreateBuilder();
-builder.AddOpenAIChatCompletion("gpt-4o-mini", apiKey);
+builder.AddOpenAIChatCompletion("gpt-5.4-mini", apiKey);
 var kernel = builder.Build();
 ```
 
@@ -56,7 +58,7 @@ var builder = Kernel.CreateBuilder();
 // Register AI service (choose one):
 // Option A: OpenAI
 builder.AddOpenAIChatCompletion(
-    modelId: "gpt-4o-mini",
+    modelId: "gpt-5.4-mini",
     apiKey: apiKey);
 
 // Option B: Azure OpenAI (commented out)
@@ -142,6 +144,18 @@ Console.WriteLine("\n✅ Kernel Architecture demo complete!");
 - [Semantic Kernel Overview](https://learn.microsoft.com/semantic-kernel/overview/)
 - [Understanding the Kernel](https://learn.microsoft.com/semantic-kernel/concepts/kernel)
 - [SK GitHub Repository](https://github.com/microsoft/semantic-kernel)
+
+---
+
+## 🚀 Migration to MAF (2026)
+
+In **Microsoft Agent Framework (MAF)**, the concept of a `Kernel` is replaced by the standard .NET dependency injection container and the `IChatClient` pipeline you learned in Week 2. MAF relies directly on `Microsoft.Extensions.AI`.
+
+Instead of `Kernel.CreateBuilder()`, you simply use:
+```csharp
+var builder = Host.CreateApplicationBuilder(args);
+builder.Services.AddChatClient(new OpenAIClient(apiKey).AsChatClient("gpt-5.4-mini"));
+```
 
 ---
 

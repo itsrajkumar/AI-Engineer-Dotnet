@@ -108,6 +108,17 @@ Maintain human oversight and clear responsibility chains.
 
 ---
 
+## 🌍 Global AI Compliance (2026 Standards)
+
+In 2026, Responsible AI is no longer just a set of ethical principles; it is mandated by global law. When building AI systems in .NET, you must design for:
+
+1. **EU AI Act Enforcement:** Fully enforced as of 2026. Systems are categorized by risk (Unacceptable, High, Limited, Minimal). High-risk systems (like HR resume screening or medical AI) require strict logging, human oversight, and CE marking. Fines can reach 7% of global revenue.
+2. **ISO/IEC 42001 (AI Management System):** The international standard for AI governance. Enterprises require ISO 42001 certification from vendors, mandating traceable AI development lifecycles and continuous risk assessments.
+3. **NIST AI RMF (Risk Management Framework):** The US standard framework (Govern, Map, Measure, Manage) used to structure AI security and safety programs.
+4. **Export Controls:** Frontier models (like GPT-5 and Llama 4) and certain fine-tuning datasets are subject to strict export controls and cannot be deployed in or accessed from restricted regions.
+
+---
+
 ## ✅ Responsible AI Checklist for .NET Projects
 
 | # | Check | Status |

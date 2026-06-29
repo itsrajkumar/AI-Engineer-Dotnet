@@ -8,6 +8,8 @@
 
 - Understand why prompt engineering is the #1 skill for AI Engineers
 - Master Zero-shot, Few-shot, and Chain-of-Thought prompting
+- Understand prompting differences for Reasoning Models (o3, DeepSeek-R1)
+- Introduction to programmatic prompt optimization (DSPy)
 - Learn advanced patterns: Role prompting, Output formatting, Guardrails
 - Practice structuring prompts that produce consistent, high-quality outputs
 
@@ -127,6 +129,15 @@ Answer: 36 shirts"
 
 > Actually, both got 36 here. But for complex multi-step reasoning, CoT prevents errors by making the model show its work — like requiring your junior devs to explain their PR.
 
+### 🆕 3.1 Prompting Reasoning Models (2026 Update)
+
+Models like **o3, GPT-5.5 (Thinking), and DeepSeek-R1** have CoT built-in natively. When prompting these models, the rules change:
+
+- **DO NOT** use "think step by step" or "explain your reasoning". The model already does this internally.
+- **DO NOT** force a specific reasoning format.
+- **DO** focus heavily on providing clear, unambiguous instructions and constraints.
+- **DO** provide edge cases directly in the prompt.
+
 ---
 
 ### 4. Role Prompting (Persona Pattern)
@@ -202,6 +213,21 @@ RULES:
 5. NEVER make up product specifications.
 6. Always include the product SKU if referencing a specific product."
 ```
+
+---
+
+### 🆕 7. Programmatic Optimization (DSPy)
+
+In 2026, writing prompts manually is increasingly replaced by programmatic optimization using frameworks like **DSPy**. Instead of tweaking strings, you define the *signature* of your task and provide examples. The optimizer then compiles the best prompt for your specific model.
+
+```csharp
+// Conceptual .NET equivalent of DSPy pattern:
+var pipeline = new Teleprompter()
+    .WithSignature<InputData, OutputData>()
+    .WithMetric(ValidationMetric)
+    .Compile(trainingExamples);
+```
+*(We will explore advanced prompt optimization in Week 3, Day 4)*
 
 ---
 

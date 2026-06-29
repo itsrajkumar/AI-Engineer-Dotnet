@@ -33,9 +33,15 @@ cos(θ) = ───────────────── = ─────�
 ## 💻 Code Sample
 
 ```csharp
+// Packages required (v10.7.0):
+// - Microsoft.Extensions.AI
+// - Microsoft.Extensions.AI.OpenAI
+// - System.Numerics.Tensors (for hardware-accelerated math)
+
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using OpenAI;
+using System.Numerics.Tensors;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 
@@ -47,14 +53,8 @@ IEmbeddingGenerator<string, Embedding<float>> embedder =
 // =====================================================
 static float CosineSimilarity(ReadOnlySpan<float> a, ReadOnlySpan<float> b)
 {
-    float dot = 0, magA = 0, magB = 0;
-    for (int i = 0; i < a.Length; i++)
-    {
-        dot += a[i] * b[i];
-        magA += a[i] * a[i];
-        magB += b[i] * b[i];
-    }
-    return dot / (MathF.Sqrt(magA) * MathF.Sqrt(magB));
+    // In .NET 10, we use hardware-accelerated SIMD instructions!
+    return TensorPrimitives.CosineSimilarity(a, b);
 }
 
 // =====================================================

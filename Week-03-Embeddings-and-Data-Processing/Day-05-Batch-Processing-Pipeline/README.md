@@ -16,6 +16,11 @@
 ## 💻 Code Sample
 
 ```csharp
+// Packages required (v10.7.0):
+// - Microsoft.Extensions.AI
+// - Microsoft.Extensions.AI.OpenAI
+// - Microsoft.Extensions.VectorData
+
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using OpenAI;

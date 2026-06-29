@@ -94,7 +94,7 @@ var tools = new List<AITool>
 // Step 2: Configure IChatClient with function calling
 // =====================================================
 IChatClient chatClient = new ChatClientBuilder(
-    new OpenAIClient(apiKey).AsChatClient("gpt-4o-mini"))
+    new OpenAIClient(apiKey).AsChatClient("gpt-5.4-mini"))
     .UseFunctionInvocation()  // Automatically executes tools!
     .Build();
 

@@ -40,7 +40,23 @@ Pattern 4: HANDOFF
 User → [General Agent] ───X──► [Specialist Agent] → Output
        "I can't handle this,     Takes over for
         passing to specialist"    complex queries
+
+Pattern 5: ORCHESTRATOR-SPECIALIST (Agent-Native 2026)
+───────────────────────────────
+User → [Orchestrator Agent]
+         ├── Delegates to [SQL Specialist Agent]
+         ├── Delegates to [Web Search Specialist Agent]
+         └── Synthesizes final answer
 ```
+
+---
+
+## 💻 MAF 1.0 GA Native Constructs
+
+While the raw `IChatClient` examples below are great for understanding the concepts, **MAF 1.0 GA** provides built-in orchestration types:
+- `AgentPipeline`: Connects agents where the output of one is the input to the next automatically.
+- `GroupChat`: Manages the debate loop automatically.
+- `SwarmRouter`: Handles Orchestrator-Specialist handoffs seamlessly.
 
 ---
 

@@ -45,8 +45,8 @@ graph TD
     TR --> B[Encoder-only - BERT]
     TR --> G[Decoder-only - GPT]
     
-    GenAI --> LLM[Large Language Models - GPT-5, Claude 4, Gemini 2.5]
-    GenAI --> SLM[Small Language Models - Phi-4 Mini, Llama 3.3]
+    GenAI --> LLM[Large Language Models - GPT-5.5, Claude 5, Gemini 3.5]
+    GenAI --> SLM[Small Language Models - Phi-4 Mini, Llama 4 Scout]
     GenAI --> IMG[Image Generation - DALL-E]
 ```
 
@@ -91,18 +91,29 @@ Your existing .NET skills handle everything else: dependency injection, configur
 ## 🔤 Large Language Models (LLMs) vs. Small Language Models (SLMs)
 
 ### LLMs — The Heavy Hitters
-- **Examples:** GPT-5.4-mini, GPT-5.4, Claude 4 Sonnet, Gemini 2.5 Pro
-- **Parameters:** 100B+ parameters
+- **Examples:** GPT-5.4/5.5, Claude 5 Fable, Gemini 3.5 Pro, DeepSeek V4
+- **Parameters:** 100B+ parameters (often hundreds of billions)
 - **Hosting:** Cloud-only (too large for local machines)
 - **Strengths:** Best reasoning, code generation, multi-step tasks
 - **Cost:** $ per API call
 
 ### SLMs — The Efficient Alternatives
-- **Examples:** Phi-4 Mini (Microsoft), Llama 3.3 8B (Meta), Mistral Small 3
-- **Parameters:** 1B-13B parameters
+- **Examples:** Phi-4 Mini (Microsoft), Llama 4 Scout (Meta), Mistral Small 4
+- **Parameters:** 1B-17B parameters
 - **Hosting:** Can run locally on a good laptop/desktop
 - **Strengths:** Fast, private, cheap; good for focused tasks
 - **Cost:** Free (local inference with [Ollama](https://ollama.com))
+
+### 🆕 Reasoning Models (o-series, GPT-5.x Thinking)
+- **Examples:** o3, o4, DeepSeek-R1, GPT-5.5 (with thinking enabled)
+- **Behavior:** These models spend time "thinking" (generating internal Chain-of-Thought tokens) before outputting the final answer.
+- **Strengths:** Complex math, coding, logic puzzles, multi-step planning.
+- **Cost:** Higher cost per prompt due to internal thinking tokens.
+
+### 🆕 Mixture of Experts (MoE)
+- **Examples:** Llama 4 Scout (17B MoE), Mistral Large 3, DeepSeek V4.
+- **Concept:** Instead of one massive neural network, the model consists of several smaller "expert" networks. For each token, a router selects only the 1-2 most relevant experts.
+- **Benefit:** Massive parameter count for knowledge, but fast inference speed because only a fraction of the network activates per token.
 
 ### When to Use Which?
 
@@ -186,12 +197,13 @@ The context window is the **maximum number of tokens** the model can process in 
 
 | Model | Context Window | Approximate Pages |
 |-------|---------------|-------------------|
-| GPT-5.4-mini | 128K+ tokens | ~200+ pages |
-| GPT-5.4 | 128K+ tokens | ~200+ pages |
-| Claude 4 Sonnet | 200K tokens | ~300 pages |
-| Gemini 2.5 Pro | 1M tokens | ~1,500 pages |
-| Llama 3.3 8B | 128K tokens | ~200 pages |
+| GPT-5.4-mini | 128K tokens | ~200 pages |
+| GPT-5.5 | 128K tokens | ~200 pages |
+| Claude 5 Fable | 200K tokens | ~300 pages |
+| Gemini 3.5 Pro | 2M tokens | ~3,000 pages |
+| Llama 4 Scout | 10M tokens | ~15,000 pages |
 | Phi-4 Mini | 128K tokens | ~200 pages |
+| DeepSeek V4 | 128K tokens | ~200 pages |
 
 ### .NET Analogy
 ```csharp

@@ -73,22 +73,25 @@ Rebuilj for each provider             Works with any AI framework
 
 ## 💻 Code Sample: Building an MCP Server in .NET
 
+> 💡 **2026 Update:** The `ModelContextProtocol` SDK is now **v1.4.0 GA**. For web applications, you should use the new `ModelContextProtocol.AspNetCore` package which provides native HTTP/SSE streaming endpoints.
+
 ```csharp
-using Microsoft.Extensions.Hosting;
-using ModelContextProtocol.Server;
+using Microsoft.AspNetCore.Builder;
+using ModelContextProtocol.AspNetCore;
 using System.ComponentModel;
 
 // =====================================================
-// MCP Server: Expose .NET tools to any AI agent
+// MCP Server via ASP.NET Core (HTTP/SSE Transport)
 // =====================================================
 
-var builder = Host.CreateApplicationBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMcpServer()
-    .WithStdioServerTransport()
+    .WithHttpStreamingTransport() // v1.4.0 Streamable HTTP Transport
     .WithToolsFromAssembly();
 
 var app = builder.Build();
+app.MapMcpEndpoints("/mcp"); // Automatically maps the SSE and POST endpoints
 await app.RunAsync();
 
 // =====================================================
@@ -215,12 +218,28 @@ Console.WriteLine($"\nAI: {response.Message.Text}");
 
 ---
 
+## 🤝 MCP vs A2A Protocol
+
+In 2026, you will often hear about both MCP and the A2A Protocol. Here is the difference:
+
+| Protocol | Purpose | Example |
+|----------|---------|---------|
+| **MCP (Model Context Protocol)** | **Agent ↔ Tool**. A standard way for an agent to talk to an external tool or data source. | Your agent calling a Jira MCP server to get tickets. |
+| **A2A Protocol (Agent-to-Agent)** | **Agent ↔ Agent**. A standard way (governed by the Linux Foundation) for agents to securely message, delegate, and collaborate with other autonomous agents. | Your MAF agent delegating a task to a Google ADK agent. |
+
+## 📅 Upcoming 2026-07-28 Spec Changes
+The upcoming MCP specification update will introduce:
+1. **Tool Streaming:** Tools can stream partial results back to the agent before completing (ideal for long-running scripts).
+2. **Binary Resource Improvements:** Optimized chunking for reading large binary files natively over the protocol.
+
+---
+
 ## 🔑 Key Takeaways
 
 - MCP = **USB-C for AI tools** — one standard connector for everything
 - MCP servers **expose tools** that any AI agent can discover and use
-- `.NET` has first-class MCP support via `ModelContextProtocol` NuGet
-- **stdio transport** for local tools, **HTTP/SSE** for remote services
+- `.NET` has first-class MCP support via `ModelContextProtocol` v1.4.0 GA
+- **stdio transport** for local tools, **HTTP/SSE streaming** for remote services
 - MCP tools integrate seamlessly with `IChatClient` via `AsAITool()`
 
 ---

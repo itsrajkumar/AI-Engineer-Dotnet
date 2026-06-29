@@ -13,9 +13,13 @@
 
 ---
 
-## 📖 MongoDB Atlas Vector Search
+## 📖 MongoDB Atlas Vector Search (v8.3)
 
-MongoDB Atlas has **native vector search** built in. You store embeddings as regular `double[]` fields, create a vector search index, and query using `$vectorSearch`.
+MongoDB Atlas has **native vector search** built in. As of MongoDB v8.3 (2026), Atlas introduced two major upgrades:
+1. **Automated Embeddings (Voyage-4/OpenAI integration):** Atlas can now generate embeddings on the server side automatically. You just pass in the text during the insert, and Atlas calls the embedding model under the hood.
+2. **Flat Indexes:** In addition to HNSW, MongoDB now supports flat indexes (exact nearest neighbor) for collections under 100,000 vectors where perfect recall is required.
+
+In the traditional manual approach (shown below), you store embeddings as regular `double[]` fields, create a vector search index, and query using `$vectorSearch`.
 
 ```
 ┌──────────────────────────────────────┐
@@ -51,7 +55,8 @@ In Atlas UI → Search Indexes → Create Search Index:
       "type": "vector",
       "path": "embedding",
       "numDimensions": 1536,
-      "similarity": "cosine"
+      "similarity": "cosine",
+      "quantization": "scalar"
     }
   ]
 }

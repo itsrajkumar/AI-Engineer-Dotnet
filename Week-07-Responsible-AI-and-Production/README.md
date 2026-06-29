@@ -1,5 +1,14 @@
 # Week 7: Responsible AI & Production Patterns
 
+> ⚠️ **Archive Notice:** This week (v2.0) has been redistributed:
+> - Responsible AI → Week 10
+> - Content Safety → Week 9, Day 3
+> - Structured Output & Middleware → Week 2
+> - Local Models → Week 3, Day 2
+> - .NET 10 Migration → Week 9, Day 5
+>
+> Follow the current 14-week curriculum.
+
 > **New!** 🆕 Based on [Generative AI for Beginners .NET v2](https://github.com/microsoft/Generative-AI-for-beginners-dotnet) — Updated for **.NET 10**
 
 ---

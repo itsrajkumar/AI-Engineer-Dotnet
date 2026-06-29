@@ -180,8 +180,9 @@ record ChatRequest(string Message, List<ChatMessage>? History = null);
 - [ ] Integration tests with real model
 - [ ] AI evaluation suite (relevance, coherence)
 
-### Deployment
+### Deployment & FinOps
 - [ ] Docker Compose (API + PostgreSQL + Ollama)
+- [ ] AI FinOps monitoring (Cost-per-ticket metrics)
 - [ ] Swagger documentation
 - [ ] README with setup instructions
 
@@ -189,7 +190,7 @@ record ChatRequest(string Message, List<ChatMessage>? History = null);
 
 ## 🏆 Congratulations!
 
-You've completed the **10-week AI Engineering with .NET** roadmap!
+You've completed the **Core 10-week AI Engineering with .NET** roadmap!
 
 ### Skills You've Gained:
 
@@ -198,12 +199,22 @@ You've completed the **10-week AI Engineering with .NET** roadmap!
 | 1 | AI fundamentals, prompt engineering, MEAI basics |
 | 2 | IChatClient, streaming, structured output, middleware |
 | 3 | Multimodal AI, local models, fine-tuning, evaluation |
-| 4 | Semantic Kernel orchestration, plugins |
-| 5 | Embeddings, chunking, batch processing |
-| 6 | Vector databases, hybrid search |
-| 7 | RAG pipeline, retrieval, augmentation |
-| 8 | AI agents, MAF, MCP, multi-agent workflows |
+| 4 | Embeddings, chunking, batch processing |
+| 5 | Vector databases, hybrid search |
+| 6 | RAG pipeline, retrieval, augmentation |
+| 7 | AI agents, MAF, MCP, multi-agent workflows |
+| 8 | Multi-agent collaboration, advanced orchestration |
 | 9 | Production APIs, observability, testing, safety |
 | 10 | Responsible AI, security, capstone deployment |
 
 **You are now a .NET AI Engineer!** 🎉
+
+---
+
+## 🚀 What's Next? (Advanced Modules)
+
+Ready to go deeper? Continue to the **[Advanced AI Expansion Curriculum](../../README.md#advanced-curriculum-weeks-11-14)**:
+- **Week 11:** Deep ML Foundations (Neural Networks from scratch in C#)
+- **Week 12:** Model Training & Alignment (RLHF, DPO in TorchSharp)
+- **Week 13:** Advanced RAG & Agents (GraphRAG, RAPTOR, Multi-Agent Swarms)
+- **Week 14:** The MCP Ecosystem (Building enterprise MCP servers)

@@ -14,6 +14,14 @@
 
 ---
 
+## 🧰 Advanced Fairness Tools (2026)
+
+In 2026, writing manual bias detectors (like the code sample below) is only step one. Enterprise teams use:
+1. **Fairlearn & FairML:** Popular ML libraries that now have excellent .NET bindings and MEAI integrations for calculating Equalized Odds and Demographic Parity natively in C#.
+2. **Microsoft Responsible AI Dashboard:** Native integration with Azure AI Foundry to visually debug bias in models and data.
+
+---
+
 ## 💻 Code Sample: Bias Detection Framework
 
 ```csharp

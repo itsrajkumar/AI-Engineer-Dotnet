@@ -1,8 +1,8 @@
 # 🗺️ Dotnet AI Engineer — Visual Roadmap
 
-> **A strategic overview of the 10-week journey to mastering AI engineering within the .NET 10 ecosystem.**
+> **A strategic overview of the 14-week journey to mastering AI engineering within the .NET 10 ecosystem.**
 >
-> 🆕 *v3.1 — Refreshed for 2026: current Microsoft Foundry guidance, GPT-5-class models, richer evaluation, MCP, and the Microsoft Agent Framework*
+> 🆕 *v4.0 — Refreshed for 2026: current Microsoft Foundry guidance, GPT-5.5/5.6 models, MCP v1.4, MAF 1.0 GA, and building models from scratch*
 
 ---
 
@@ -45,7 +45,7 @@ graph TD
     
     W3 --> W4
     
-    subgraph W4["Week 4: Semantic Kernel"]
+    subgraph W4["Week 4: MAF & AI Orchestration"]
         W4D1["Day 1: Kernel Architecture<br/>DI Container for AI"]
         W4D2["Day 2: Semantic Functions<br/>Prompt Templates"]
         W4D3["Day 3: Native C# Plugins<br/>KernelFunction Attribute"]
@@ -119,8 +119,52 @@ graph TD
         W10D5["Day 5: Capstone Build<br/>Deploy & Portfolio"]
         W10D1 --> W10D2 --> W10D3 --> W10D4 --> W10D5
     end
+
+    W10 --> W11
+
+    subgraph W11["Week 11: Deep ML Foundations 🆕"]
+        W11D1["Day 1: ML Fundamentals<br/>Loss, Backprop, Optimizers"]
+        W11D2["Day 2: NN From Scratch<br/>MLP in C# & TorchSharp"]
+        W11D3["Day 3: Transformer<br/>Attention Is All You Need"]
+        W11D4["Day 4: Mini-Transformer<br/>Build GPT in C#"]
+        W11D5["Day 5: Modern Arch<br/>MoE, Mamba, ViT"]
+        W11D1 --> W11D2 --> W11D3 --> W11D4 --> W11D5
+    end
+
+    W11 --> W12
+
+    subgraph W12["Week 12: Training & Alignment 🆕"]
+        W12D1["Day 1: Pretraining<br/>Data Prep & Tokenization"]
+        W12D2["Day 2: SFT<br/>Instruction Tuning"]
+        W12D3["Day 3: Alignment<br/>RLHF & DPO"]
+        W12D4["Day 4: PEFT<br/>LoRA & QLoRA"]
+        W12D5["Day 5: Synthetic Data<br/>Automated Gen Pipelines"]
+        W12D1 --> W12D2 --> W12D3 --> W12D4 --> W12D5
+    end
+
+    W12 --> W13
+
+    subgraph W13["Week 13: Advanced RAG & Agents 🆕"]
+        W13D1["Day 1: GraphRAG<br/>Knowledge Graph Extraction"]
+        W13D2["Day 2: RAPTOR<br/>Self-RAG & CRAG"]
+        W13D3["Day 3: Agent Swarms<br/>Orchestrator-Specialist Pattern"]
+        W13D4["Day 4: Frameworks<br/>MAF vs AutoGen vs LangGraph"]
+        W13D5["Day 5: Observability<br/>Tracing & Circuit Breakers"]
+        W13D1 --> W13D2 --> W13D3 --> W13D4 --> W13D5
+    end
+
+    W13 --> W14
+
+    subgraph W14["Week 14: The MCP Ecosystem 🆕"]
+        W14D1["Day 1: MCP Arch<br/>Resources, Tools, Prompts"]
+        W14D2["Day 2: Build Servers<br/>.NET MCP SDK"]
+        W14D3["Day 3: Clients in MAF<br/>Dynamic Discovery"]
+        W14D4["Day 4: Security<br/>Auth & Identity"]
+        W14D5["Day 5: Deployment<br/>Docker & Scaling"]
+        W14D1 --> W14D2 --> W14D3 --> W14D4 --> W14D5
+    end
     
-    W10 --> CAPSTONE([🏆 CAPSTONE: AI Retail Assistant])
+    W14 --> CAPSTONE([🏆 CAPSTONE: Full-Stack AI Platform])
 ```
 
 ---
@@ -132,8 +176,20 @@ graph TD
 │                    YOUR .NET AI APPLICATION                       │
 │                                                                   │
 │  ┌─────────────────────────────────────────────────────────────┐ │
-│  │              🆕 WEEK 10: RESPONSIBLE AI & CAPSTONE          │ │
-│  │  6 Principles, Bias Detection, OWASP LLM Top 10, Capstone  │ │
+│  │         🆕 WEEK 14: THE MCP ECOSYSTEM                       │ │
+│  │  MCP Architecture, Building Servers, Clients, Security     │ │
+│  ├─────────────────────────────────────────────────────────────┤ │
+│  │         🆕 WEEK 13: ADVANCED RAG & AGENTS                   │ │
+│  │  GraphRAG, RAPTOR, Agent Swarms, Framework Comparisons     │ │
+│  ├─────────────────────────────────────────────────────────────┤ │
+│  │         🆕 WEEK 12: MODEL TRAINING & ALIGNMENT              │ │
+│  │  SFT, RLHF, DPO, LoRA, QLoRA, Synthetic Data               │ │
+│  ├─────────────────────────────────────────────────────────────┤ │
+│  │         🆕 WEEK 11: DEEP ML FOUNDATIONS                     │ │
+│  │  NN from Scratch, Transformer Architecture, MoE, TorchSharp │ │
+│  ├─────────────────────────────────────────────────────────────┤ │
+│  │              🆕 WEEK 10: RESPONSIBLE AI                     │ │
+│  │  6 Principles, Bias Detection, OWASP LLM Top 10, Security  │ │
 │  ├─────────────────────────────────────────────────────────────┤ │
 │  │              🆕 WEEK 9: PRODUCTION ENGINEERING              │ │
 │  │  ASP.NET APIs, OpenTelemetry, Content Safety, AI Testing    │ │
@@ -148,7 +204,7 @@ graph TD
 │  │  MongoDB Atlas, pgvector, Hybrid Search │  Chunk, Embed,     │ │
 │  │  Repository Pattern                     │  Cosine Similarity  │ │
 │  ├─────────────────────────────────────────────────────────────┤ │
-│  │                    WEEK 4: SEMANTIC KERNEL                   │ │
+│  │               WEEK 4: MAF & AI ORCHESTRATION                 │ │
 │  │  Kernel, Plugins, Semantic Functions, Tool Calling           │ │
 │  ├─────────────────────────────────────────────────────────────┤ │
 │  │              🆕 WEEK 3: ADVANCED AI TECHNIQUES              │ │
@@ -197,4 +253,12 @@ graph TD
 | Responsible AI | Week 10 🆕 | Required for production |
 | Bias detection | Week 10 🆕 | Fairness, audits & ethics |
 | AI security (OWASP) | Week 10 🆕 | Enterprise safety |
+| ML fundamentals | Week 11 🆕 | Deep learning intuition |
+| Transformer architecture | Week 11 🆕 | Core of modern AI |
+| Fine-tuning (LoRA) | Week 12 🆕 | Customizing models efficiently |
+| Alignment (RLHF/DPO) | Week 12 🆕 | Model behavior tuning |
+| GraphRAG & RAPTOR | Week 13 🆕 | Next-gen enterprise RAG |
+| Agent Swarms | Week 13 🆕 | Complex reasoning across agents |
+| MCP Servers | Week 14 🆕 | Enterprise tool abstraction |
+| MCP Security | Week 14 🆕 | Safe, decentralized tool access |
 | Clean Architecture | Capstone | Production .NET |

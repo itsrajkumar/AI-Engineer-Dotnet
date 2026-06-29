@@ -182,6 +182,22 @@ public class OutputFilterMiddleware : DelegatingChatClient
 
 ---
 
+## 🛡️ Enterprise Guardrail Platforms (2026)
+
+While the custom middleware shown above is great for learning, production systems in 2026 typically use dedicated guardrail engines:
+
+1. **NeMo Guardrails (NVIDIA):** An open-source toolkit that adds programmable rails to LLM apps. You define "rails" in Colang (a specialized policy language) to control dialog flow, prevent off-topic chatting, and enforce strict execution paths.
+2. **Lakera Guard:** A commercial, enterprise-grade AI firewall that provides zero-day protection against prompt injections, data leakage, and toxic content.
+
+### OWASP Top 10 for Agentic Applications
+
+When building AI APIs, you must mitigate the **2026 OWASP Top 10 for Agentic Applications**. Key vulnerabilities include:
+- **Agentic Prompt Injection:** Malicious instructions hidden in documents that hijack the agent's goal.
+- **Over-Privileged Tool Access:** The agent API having access to destructive tools without human-in-the-loop validation.
+- **Unbounded Agent Loops:** An agent API getting stuck in an infinite retry loop, causing Denial of Wallet (DoW).
+
+---
+
 ## 🏗️ Safety Architecture
 
 ```

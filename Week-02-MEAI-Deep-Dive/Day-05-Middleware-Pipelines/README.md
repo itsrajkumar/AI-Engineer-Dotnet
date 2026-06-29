@@ -6,6 +6,8 @@
 
 ---
 
+> ⚠️ **Note (June 2026):** With the release of Microsoft Agent Framework (MAF) 1.0 GA, Semantic Kernel has been deprecated. MAF is built directly on top of `Microsoft.Extensions.AI`. The middleware patterns you learn here apply identically to MAF agents.
+
 ## 🎯 Learning Objectives
 
 - Build `ChatClientBuilder` middleware pipelines
@@ -49,7 +51,7 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 // Create a fully-composed middleware pipeline
 IChatClient chatClient = new ChatClientBuilder(
     new OpenAIClient(config["OpenAI:ApiKey"]!)
-        .AsChatClient("gpt-4o-mini"))
+        .AsChatClient("gpt-5.4-mini"))
     .UseOpenTelemetry()                       // 1. Traces & metrics
     .UseDistributedCache(new MemoryDistributedCache(   // 2. Caching
         Options.Create(new MemoryDistributedCacheOptions())))

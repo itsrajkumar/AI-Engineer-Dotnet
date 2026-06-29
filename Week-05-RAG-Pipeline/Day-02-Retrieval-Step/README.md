@@ -13,7 +13,18 @@
 
 ---
 
-## 💻 Code Sample
+## 🚀 Advanced Query Processing (2026 Standards)
+
+Before embedding the user's question, modern systems transform the query to improve retrieval:
+
+1. **HyDE (Hypothetical Document Embeddings):** The user asks a question. An LLM generates a *fake, hypothetical answer*. You embed the *answer* instead of the question, and search for documents similar to the hypothetical answer. This bridges the semantic gap between questions and answers.
+2. **Query Decomposition:** If a user asks "How do .NET 10 performance improvements compare to Java 21?", the LLM splits this into two sub-queries, searches both independently, and combines the results.
+3. **Step-Back Prompting:** The LLM extracts the core underlying principle of the question and searches for that broader concept as well, ensuring foundational context is retrieved alongside specific details.
+4. **Contextual Retrieval:** Injecting user history and application context into the query so "What about security?" becomes "What are the security implications of Entity Framework Core in a multi-tenant application?"
+
+---
+
+## 💻 Code Sample (Basic Retrieval)
 
 ```csharp
 using Microsoft.Extensions.AI;

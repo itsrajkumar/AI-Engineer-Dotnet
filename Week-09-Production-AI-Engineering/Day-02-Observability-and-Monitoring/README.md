@@ -149,6 +149,26 @@ public class CostTrackingMiddleware : DelegatingChatClient
 
 ---
 
+## 📈 AI FinOps & Optimization (2026 Standards)
+
+### 1. AI FinOps (Cost-per-Resolved-Outcome)
+In 2026, tracking just "tokens" is insufficient. FinOps for AI tracks **cost per resolved outcome**. If an agent spends $0.50 in tokens but resolves a customer service ticket that normally costs $8.00 in human labor, the AI has a positive ROI. Metrics must tie API costs directly to business outcomes (e.g., `ai.cost.per_ticket_resolved`).
+
+### 2. Semantic & Prompt Caching
+To reduce costs and latency, production systems heavily utilize:
+- **Semantic Caching:** Caching the *intent* of a query using vector similarity. If User A asks "How to install MEAI?" and User B asks "Steps for installing Microsoft Extensions AI", the cache recognizes they mean the same thing and returns the cached answer without calling the LLM.
+- **Prompt Caching:** Frontier models (GPT-5, Claude 5) support native prompt caching. If you send the same massive RAG context repeatedly, the provider caches it, slashing input costs by up to 80%.
+
+---
+
+## 🧰 Advanced Observability Platforms
+
+While OpenTelemetry is the foundation, specialized AI observability platforms provide deeper insights:
+- **Langfuse V4:** The industry standard for tracing complex agentic applications. V4 adds full MAF integration and real-time cost-per-outcome analytics.
+- **Arize Phoenix:** Excellent for tracing and evaluating RAG pipelines, including UMAP visualizations of your vector embeddings to spot semantic drift.
+
+---
+
 ## 🔑 Key Takeaways
 
 - **OpenTelemetry** is the standard for AI observability in .NET

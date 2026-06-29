@@ -17,6 +17,8 @@
 
 ### Interface Definition
 
+> 💡 **2026 Update:** While building a custom `IVectorRepository` (shown below) is great for learning, in .NET 10 (2026), the standard approach is to use the `Microsoft.Extensions.VectorData` package. It provides `IVectorStore` and `IVectorStoreRecordCollection` as unified, provider-agnostic interfaces for Qdrant, pgvector, Azure AI Search, Pinecone, and more!
+
 ```csharp
 /// <summary>
 /// Abstracts vector storage operations.

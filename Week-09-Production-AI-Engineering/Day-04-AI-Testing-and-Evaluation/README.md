@@ -251,6 +251,32 @@ public class AIEvaluationTests
 
 ---
 
+## 🚀 Advanced Agentic Evaluation (2026 Standards)
+
+Relying on basic regex and keyword assertions isn't enough for autonomous agents. In 2026, the industry uses **LLM-as-a-Judge** and specialized evaluation frameworks:
+
+1. **DeepEval:** An open-source evaluation framework that measures specific metrics like *Faithfulness* (hallucination), *Answer Relevance*, and *Contextual Precision*. It uses an evaluator LLM to grade your agent's LLM.
+2. **Promptfoo:** A popular CLI tool to systematically test prompts and agents across multiple models simultaneously, generating a matrix of pass/fail results.
+
+### Agentic Evaluation (Testing Agents with Agents)
+Because agents use tools dynamically, you cannot easily test them with static string assertions. Instead, you use an **Evaluator Agent**:
+
+```csharp
+// The Evaluator Agent acts as a judge
+var judge = new ChatAgent(judgeClient, "Judge")
+{
+    Instructions = """
+        You are an evaluator. Review the conversation between the User and the RetailAgent.
+        Did the RetailAgent successfully resolve the user's issue using the correct tools?
+        Reply with a JSON object: { "passed": true/false, "reason": "..." }
+        """
+};
+
+// ... run the RetailAgent, collect the transcript, then feed it to the Judge ...
+```
+
+---
+
 ## 📊 AI Testing Pyramid
 
 ```

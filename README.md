@@ -6,8 +6,8 @@
 ### Master the Modern AI Stack with C# and .NET 10
 
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
-[![Semantic Kernel](https://img.shields.io/badge/Semantic_Kernel-1.x-742774?logo=microsoft&logoColor=white)](https://learn.microsoft.com/semantic-kernel/)
-[![MAF](https://img.shields.io/badge/Agent_Framework-RC-e67e22?logo=microsoft&logoColor=white)](https://github.com/microsoft/agent-framework)
+[![MAF](https://img.shields.io/badge/Agent_Framework-1.0_GA-e67e22?logo=microsoft&logoColor=white)](https://github.com/microsoft/agent-framework)
+[![Semantic Kernel](https://img.shields.io/badge/Semantic_Kernel-Deprecated-742774?logo=microsoft&logoColor=white)](https://learn.microsoft.com/semantic-kernel/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Stars](https://img.shields.io/github/stars/itsrajkumar/AI-Engineer-With-.Net?style=social)](https://github.com/itsrajkumar/AI-Engineer-With-.Net)
@@ -17,7 +17,7 @@
 **Learn to build production-grade AI applications using your existing .NET expertise.**
 *Skip the Python-heavy tutorials. Direct path for C# engineers, from first API call to model adaptation, RAG, agents, and production deployment.*
 
-> 🆕 **v3.1 — 2026 Refresh** — Updated for current Microsoft Foundry guidance, GPT-5-class models, richer evaluation, MCP, and the Microsoft Agent Framework.
+> 🆕 **v4.0 — June 2026 Refresh** — Updated for current Microsoft Foundry guidance, GPT-5.5/5.6 models, richer evaluation, MCP v1.4, MAF 1.0 GA, and deep ML foundations (build from scratch).
 
 [Explore Roadmap](#roadmap-overview) • [Quick Start](#getting-started) • [Tech Stack](#tech-stack) • [Contribute](./CONTRIBUTING.md)
 
@@ -31,9 +31,9 @@ This community-driven roadmap is designed for **.NET developers** who want to tr
 ### Why this roadmap?
 - 🚀 **C#-First**: No switching to Python for model orchestration.
 - 🏗️ **Architectural Focus**: Learn RAG, Agents, MCP, and Vector Storage patterns.
-- 🛠️ **Modern Stack**: Built with .NET 10, Microsoft.Extensions.AI, and Microsoft Agent Framework.
-- 🆕 **v3 Content**: Includes Multimodal AI, MCP Protocol, AI Testing, Production Engineering, Structured Output, and Middleware Pipelines.
-- 📐 **10 Weeks, 50 Days**: Comprehensive coverage with zero gaps in AI Engineering expertise.
+- 🛠️ **Modern Stack**: Built with .NET 10, Microsoft.Extensions.AI (v10.7.0), and Microsoft Agent Framework (1.0 GA).
+- 🆕 **v4 Content**: Includes building models from scratch, advanced RAG, A2A Protocol, and AI Platform Engineering.
+- 📐 **14 Weeks, 70 Days**: Comprehensive coverage with zero gaps in AI Engineering expertise from beginner to expert.
 
 ---
 
@@ -43,14 +43,18 @@ This community-driven roadmap is designed for **.NET developers** who want to tr
 graph TD
     W1[<b>Week 1</b><br/>AI Fundamentals] --> W2[<b>Week 2</b><br/>MEAI Deep Dive]
     W2 --> W3[<b>Week 3</b><br/>Advanced Techniques]
-    W3 --> W4[<b>Week 4</b><br/>Semantic Kernel]
+    W3 --> W4[<b>Week 4</b><br/>MAF & AI Orchestration]
     W4 --> W5[<b>Week 5</b><br/>Embeddings]
     W5 --> W6[<b>Week 6</b><br/>Vector Storage]
     W6 --> W7[<b>Week 7</b><br/>RAG Pipeline]
     W7 --> W8[<b>Week 8</b><br/>AI Agents & MAF]
     W8 --> W9[<b>Week 9</b><br/>Production Engineering]
     W9 --> W10[<b>Week 10</b><br/>Responsible AI]
-    W10 --> CP[<b>🏆 Capstone</b><br/>Retail Assistant]
+    W10 --> W11[<b>Week 11</b><br/>Deep ML Foundations]
+    W11 --> W12[<b>Week 12</b><br/>Model Training & Alignment]
+    W12 --> W13[<b>Week 13</b><br/>Advanced RAG & Reasoning]
+    W13 --> W14[<b>Week 14</b><br/>AI Platform Engineering]
+    W14 --> CP[<b>🏆 Capstone v2</b><br/>Full-Stack AI Platform]
 
     style W1 fill:#512BD4,color:#fff
     style W2 fill:#6C3FAA,color:#fff
@@ -62,6 +66,10 @@ graph TD
     style W8 fill:#e67e22,color:#fff
     style W9 fill:#e74c3c,color:#fff
     style W10 fill:#9b59b6,color:#fff
+    style W11 fill:#f39c12,color:#fff
+    style W12 fill:#d35400,color:#fff
+    style W13 fill:#c0392b,color:#fff
+    style W14 fill:#8e44ad,color:#fff
     style CP fill:#ffd700,color:#000
 ```
 
@@ -101,7 +109,7 @@ Setup your development environment, Azure account, and required tools.
 | 4 | [Advanced Prompt Engineering](./Week-03-Advanced-AI-Techniques/Day-04-Advanced-Prompt-Engineering/README.md) | 📖 Theory + Code |
 | 5 | [AI Evaluation Basics](./Week-03-Advanced-AI-Techniques/Day-05-AI-Evaluation-Basics/README.md) | 💻 Code |
 
-### [Week 4: Microsoft Semantic Kernel — The Orchestrator](./Week-02-Semantic-Kernel-Orchestrator/README.md)
+### [Week 4: MAF & AI Orchestration (SK Migration)](./Week-02-Semantic-Kernel-Orchestrator/README.md)
 | Day | Topic | Type |
 |-----|-------|------|
 | 1 | [Kernel Architecture](./Week-02-Semantic-Kernel-Orchestrator/Day-01-Kernel-Architecture/README.md) | 💻 Code |
@@ -164,7 +172,43 @@ Setup your development environment, Azure account, and required tools.
 | 4 | [Capstone: Architecture & Setup](./Week-10-Responsible-AI-and-Capstone/Day-04-Capstone-Architecture/README.md) | 🏗️ Project |
 | 5 | [Capstone: Build & Deploy](./Week-10-Responsible-AI-and-Capstone/Day-05-Capstone-Build-and-Deploy/README.md) | 🏗️ Project |
 
-### [🏆 Capstone: AI-Powered Retail Assistant](./Capstone-Project/README.md)
+### 🆕 [Week 11: Deep ML Foundations](./Week-11-Deep-ML-Foundations/README.md)
+| Day | Topic | Type |
+|-----|-------|------|
+| 1 | [ML Fundamentals Refresher](./Week-11-Deep-ML-Foundations/Day-01-ML-Fundamentals/README.md) | 📖 Theory |
+| 2 | [Neural Networks from Scratch](./Week-11-Deep-ML-Foundations/Day-02-Neural-Networks-From-Scratch/README.md) | 💻 Code |
+| 3 | [The Transformer Architecture](./Week-11-Deep-ML-Foundations/Day-03-Transformer-Architecture/README.md) | 📖 Theory |
+| 4 | [Building a Mini-Transformer](./Week-11-Deep-ML-Foundations/Day-04-Mini-Transformer/README.md) | 💻 Code |
+| 5 | [Modern Architectures](./Week-11-Deep-ML-Foundations/Day-05-Modern-Architectures/README.md) | 📖 Theory |
+
+### 🆕 [Week 12: Model Training and Alignment](./Week-12-Model-Training-and-Alignment/README.md)
+| Day | Topic | Type |
+|-----|-------|------|
+| 1 | [Pretraining & Datasets](./Week-12-Model-Training-and-Alignment/Day-01-Pretraining-and-Datasets/README.md) | 📖 Theory |
+| 2 | [Supervised Fine-Tuning (SFT)](./Week-12-Model-Training-and-Alignment/Day-02-Supervised-Fine-Tuning/README.md) | 📖 Theory |
+| 3 | [RLHF and DPO](./Week-12-Model-Training-and-Alignment/Day-03-RLHF-and-DPO/README.md) | 📖 Theory |
+| 4 | [Parameter-Efficient Fine-Tuning](./Week-12-Model-Training-and-Alignment/Day-04-Parameter-Efficient-Fine-Tuning/README.md) | 📖 Theory |
+| 5 | [Synthetic Data Generation](./Week-12-Model-Training-and-Alignment/Day-05-Synthetic-Data-Generation/README.md) | 💻 Code |
+
+### 🆕 [Week 13: Advanced RAG and Agents](./Week-13-Advanced-RAG-and-Agents/README.md)
+| Day | Topic | Type |
+|-----|-------|------|
+| 1 | [GraphRAG](./Week-13-Advanced-RAG-and-Agents/Day-01-GraphRAG/README.md) | 📖 Theory + Code |
+| 2 | [RAPTOR and Self-RAG](./Week-13-Advanced-RAG-and-Agents/Day-02-RAPTOR-and-Self-RAG/README.md) | 📖 Theory |
+| 3 | [Agent Swarms](./Week-13-Advanced-RAG-and-Agents/Day-03-Agent-Swarms/README.md) | 📖 Theory + Code |
+| 4 | [Multi-Agent Frameworks](./Week-13-Advanced-RAG-and-Agents/Day-04-Multi-Agent-Frameworks/README.md) | 📖 Theory |
+| 5 | [Agent Observability](./Week-13-Advanced-RAG-and-Agents/Day-05-Agent-Observability/README.md) | 💻 Code |
+
+### 🆕 [Week 14: The MCP Ecosystem](./Week-14-MCP-Ecosystem/README.md)
+| Day | Topic | Type |
+|-----|-------|------|
+| 1 | [MCP Architecture](./Week-14-MCP-Ecosystem/Day-01-MCP-Architecture/README.md) | 📖 Theory |
+| 2 | [Building MCP Servers](./Week-14-MCP-Ecosystem/Day-02-Building-MCP-Servers/README.md) | 💻 Code |
+| 3 | [MCP Clients in MAF](./Week-14-MCP-Ecosystem/Day-03-MCP-Clients-in-MAF/README.md) | 💻 Code |
+| 4 | [Authentication & Security](./Week-14-MCP-Ecosystem/Day-04-Authentication-and-Security/README.md) | 💻 Code |
+| 5 | [Enterprise Deployment](./Week-14-MCP-Ecosystem/Day-05-Enterprise-Deployment/README.md) | 🏗️ Project |
+
+### [🏆 Capstone v2: Full-Stack AI Platform](./Capstone-Project/README.md)
 
 ---
 
@@ -173,16 +217,15 @@ Setup your development environment, Azure account, and required tools.
 | Category | Technology |
 |----------|-----------|
 | **Runtime** | .NET 10 (LTS) / C# 14 |
-| **AI Abstraction** | Microsoft.Extensions.AI (GA) |
-| **AI Orchestrator** | Microsoft Semantic Kernel 1.x |
-| **Agent Framework** | Microsoft Agent Framework (MAF) |
+| **AI Abstraction** | Microsoft.Extensions.AI (v10.7.0 GA) |
+| **AI Orchestrator** | Microsoft Agent Framework 1.0 GA |
 | **LLM Provider** | Microsoft Foundry / Azure OpenAI / OpenAI / Ollama |
-| **Embedding Model** | text-embedding-3-large + current local embedding models |
-| **Vector Storage** | MongoDB Atlas / PostgreSQL (pgvector) / hybrid retrieval stacks |
-| **Local Models** | Foundry Local, Ollama, Docker Model Runner, AI Toolkit |
+| **Embedding Model** | text-embedding-3-large, Qwen3-Embedding, Matryoshka models |
+| **Vector Storage** | MongoDB Atlas / PostgreSQL (pgvector) / Pinecone / Weaviate |
+| **Local Models** | Foundry Local v1.2, Ollama, Docker Model Runner, AI Toolkit |
 | **Auth** | AzureCliCredential (Azure Identity) |
-| **Observability** | OpenTelemetry + eval/cost tracing |
-| **MCP** | Model Context Protocol (.NET SDK) |
+| **Observability** | OpenTelemetry, LangFuse, Arize Phoenix |
+| **Protocols** | MCP v1.4.0+, A2A Protocol v1.0 |
 | **Testing** | xUnit + NSubstitute + LLM-as-Judge + regression evals |
 | **IDE** | Visual Studio 2022 / VS Code / JetBrains Rider |
 
@@ -268,6 +311,30 @@ Use this checklist to track your progress:
 - [ ] **Week 10, Day 3** — Security for AI Systems 🆕
 - [ ] **Week 10, Day 4** — Capstone: Architecture 🆕
 - [ ] **Week 10, Day 5** — Capstone: Build & Deploy 🆕
+<!-- Week 11 (NEW) -->
+- [ ] **Week 11, Day 1** — ML Fundamentals Refresher 🆕
+- [ ] **Week 11, Day 2** — Neural Networks from Scratch 🆕
+- [ ] **Week 11, Day 3** — Transformer Architecture 🆕
+- [ ] **Week 11, Day 4** — Building a Mini-Transformer 🆕
+- [ ] **Week 11, Day 5** — Modern Architectures 🆕
+<!-- Week 12 (NEW) -->
+- [ ] **Week 12, Day 1** — Pretraining & Datasets 🆕
+- [ ] **Week 12, Day 2** — Supervised Fine-Tuning 🆕
+- [ ] **Week 12, Day 3** — RLHF and DPO 🆕
+- [ ] **Week 12, Day 4** — Parameter-Efficient Fine-Tuning 🆕
+- [ ] **Week 12, Day 5** — Synthetic Data Generation 🆕
+<!-- Week 13 (NEW) -->
+- [ ] **Week 13, Day 1** — GraphRAG 🆕
+- [ ] **Week 13, Day 2** — RAPTOR and Self-RAG 🆕
+- [ ] **Week 13, Day 3** — Agent Swarms 🆕
+- [ ] **Week 13, Day 4** — Multi-Agent Frameworks 🆕
+- [ ] **Week 13, Day 5** — Agent Observability 🆕
+<!-- Week 14 (NEW) -->
+- [ ] **Week 14, Day 1** — MCP Architecture 🆕
+- [ ] **Week 14, Day 2** — Building MCP Servers 🆕
+- [ ] **Week 14, Day 3** — MCP Clients in MAF 🆕
+- [ ] **Week 14, Day 4** — Authentication & Security 🆕
+- [ ] **Week 14, Day 5** — Enterprise Deployment 🆕
 
 ---
 
@@ -285,6 +352,13 @@ Use this checklist to track your progress:
 - [Roadmap.sh AI Engineer Roadmap](https://roadmap.sh/ai-engineer)
 - [Ollama](https://ollama.com) — Run LLMs locally
 - [.NET MCP SDK](https://github.com/modelcontextprotocol/csharp-sdk) — MCP for .NET
+- [A2A Protocol](https://github.com/a2a-protocol) — Agent-to-Agent communication
+- [TorchSharp](https://github.com/dotnet/TorchSharp) — .NET bindings for PyTorch
+- [ML.NET](https://dotnet.microsoft.com/en-us/apps/machinelearning-ai/ml-dotnet) — Machine Learning for .NET
+- [ONNX Runtime](https://onnxruntime.ai/) — Cross-platform inferencing
+- [DeepEval](https://github.com/confident-ai/deepeval) — LLM Evaluation
+- [Promptfoo](https://www.promptfoo.dev/) — Prompt Evaluation
+- [LangFuse](https://langfuse.com/) — LLM Observability
 
 ---
 
