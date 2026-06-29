@@ -15,11 +15,11 @@
 ---
 
 **Learn to build production-grade AI applications using your existing .NET expertise.**
-*Skip the Python-heavy tutorials. Direct path for C# Engineers.*
+*Skip the Python-heavy tutorials. Direct path for C# engineers, from first API call to model adaptation, RAG, agents, and production deployment.*
 
-> 🆕 **v3.0 — Expanded to 10 Weeks (50 Days)** — Now includes MEAI Deep Dive, Multimodal AI, MCP Protocol, AI Testing, Production Engineering, and the Microsoft Agent Framework.
+> 🆕 **v3.1 — 2026 Refresh** — Updated for current Microsoft Foundry guidance, GPT-5-class models, richer evaluation, MCP, and the Microsoft Agent Framework.
 
-[Explore Roadmap](#️-roadmap-overview) • [Quick Start](#-getting-started) • [Tech Stack](#️-tech-stack) • [Contribute](./CONTRIBUTING.md)
+[Explore Roadmap](#roadmap-overview) • [Quick Start](#getting-started) • [Tech Stack](#tech-stack) • [Contribute](./CONTRIBUTING.md)
 
 </div>
 
@@ -176,14 +176,14 @@ Setup your development environment, Azure account, and required tools.
 | **AI Abstraction** | Microsoft.Extensions.AI (GA) |
 | **AI Orchestrator** | Microsoft Semantic Kernel 1.x |
 | **Agent Framework** | Microsoft Agent Framework (MAF) |
-| **LLM Provider** | Azure OpenAI / OpenAI / Ollama (local) |
-| **Embedding Model** | text-embedding-3-small |
-| **Vector Storage** | MongoDB Atlas / PostgreSQL (pgvector) |
-| **Local Models** | Ollama, Docker Model Runner, AI Toolkit |
+| **LLM Provider** | Microsoft Foundry / Azure OpenAI / OpenAI / Ollama |
+| **Embedding Model** | text-embedding-3-large + current local embedding models |
+| **Vector Storage** | MongoDB Atlas / PostgreSQL (pgvector) / hybrid retrieval stacks |
+| **Local Models** | Foundry Local, Ollama, Docker Model Runner, AI Toolkit |
 | **Auth** | AzureCliCredential (Azure Identity) |
-| **Observability** | OpenTelemetry |
+| **Observability** | OpenTelemetry + eval/cost tracing |
 | **MCP** | Model Context Protocol (.NET SDK) |
-| **Testing** | xUnit + NSubstitute + LLM-as-Judge |
+| **Testing** | xUnit + NSubstitute + LLM-as-Judge + regression evals |
 | **IDE** | Visual Studio 2022 / VS Code / JetBrains Rider |
 
 ---

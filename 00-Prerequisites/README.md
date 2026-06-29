@@ -1,6 +1,6 @@
 # 📋 Prerequisites — Environment Setup
 
-Before starting the 6-week roadmap, ensure your development environment is properly configured.
+Before starting the 10-week roadmap, ensure your development environment is properly configured.
 
 ---
 
@@ -31,8 +31,8 @@ Before starting the 6-week roadmap, ensure your development environment is prope
 ### Option A: Azure OpenAI (Recommended for Enterprise)
 1. Azure Subscription
 2. Azure OpenAI resource with deployed models:
-   - `gpt-4o` or `gpt-4o-mini` (for chat completions)
-   - `text-embedding-3-small` (for embeddings)
+   - a current GPT-5-class deployment, such as `gpt-5.4-mini`, for chat completions
+   - `text-embedding-3-large` or your current embedding deployment for embeddings
 
 ### Option B: OpenAI API (Simpler Setup)
 1. OpenAI account at [platform.openai.com](https://platform.openai.com)
@@ -40,7 +40,7 @@ Before starting the 6-week roadmap, ensure your development environment is prope
 
 ### Option C: Local Models (Free, No API Keys)
 1. [Ollama](https://ollama.com/) installed locally
-2. Models: `llama3.1`, `nomic-embed-text`
+2. Models: a current Llama-family model, `phi-4-mini`, and `nomic-embed-text` or `bge-m3`
 
 > **💡 Tip:** You can start with Option B or C and migrate to Azure later. The code samples support all three options.
 
@@ -83,12 +83,12 @@ dotnet user-secrets init
 
 # Set your API key
 dotnet user-secrets set "OpenAI:ApiKey" "sk-your-key-here"
-dotnet user-secrets set "OpenAI:ModelId" "gpt-4o-mini"
+dotnet user-secrets set "OpenAI:ModelId" "gpt-5.4-mini"
 
 # For Azure OpenAI
 dotnet user-secrets set "AzureOpenAI:Endpoint" "https://your-resource.openai.azure.com/"
 dotnet user-secrets set "AzureOpenAI:ApiKey" "your-azure-key"
-dotnet user-secrets set "AzureOpenAI:DeploymentName" "gpt-4o"
+dotnet user-secrets set "AzureOpenAI:DeploymentName" "gpt-5.4-mini"
 ```
 
 ---

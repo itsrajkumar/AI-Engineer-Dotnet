@@ -35,13 +35,13 @@ In the Azure OpenAI Studio:
 2. Deploy the following models:
 
 Model 1 (Chat):
-   - Model: gpt-4o-mini
-   - Deployment name: gpt-4o-mini
+   - Model: gpt-5.4-mini
+   - Deployment name: gpt-5.4-mini
    - Tokens per minute: 30K (free tier sufficient)
 
 Model 2 (Embeddings):
-   - Model: text-embedding-3-small
-   - Deployment name: text-embedding-3-small
+   - Model: text-embedding-3-large
+   - Deployment name: text-embedding-3-large
    - Tokens per minute: 120K
 ```
 
@@ -74,8 +74,8 @@ You'll need:
 4. Copy and save the key (you won't see it again!)
 
 ### Models Available
-- Chat: `gpt-4o-mini` (~$0.15 per 1M input tokens — very cheap for learning)
-- Embeddings: `text-embedding-3-small` (~$0.02 per 1M tokens)
+- Chat: `gpt-5.4-mini` (cost varies by deployment and provider)
+- Embeddings: `text-embedding-3-large` (cost varies by provider and region)
 
 ---
 
@@ -89,7 +89,10 @@ You'll need:
 ### Step 2: Pull Models
 ```powershell
 # Chat model
-ollama pull llama3.1:8b
+ollama pull llama3.3:8b
+
+# Optional compact reasoning model if available in your environment
+# ollama pull phi4-mini
 
 # Embedding model
 ollama pull nomic-embed-text
@@ -101,7 +104,7 @@ ollama list
 ### Step 3: Verify
 ```powershell
 # Start a chat to verify
-ollama run llama3.1:8b "Say hello in one sentence"
+ollama run llama3.3:8b "Say hello in one sentence"
 
 # The Ollama API runs at http://localhost:11434
 ```
@@ -112,12 +115,12 @@ ollama run llama3.1:8b "Say hello in one sentence"
 
 ## Cost Estimation
 
-For the complete 6-week roadmap using OpenAI API:
+For the complete 10-week roadmap using OpenAI or Azure OpenAI API:
 
 | Usage | Estimated Cost |
 |-------|---------------|
-| Chat completions (gpt-4o-mini) | ~$2-5 |
-| Embeddings (text-embedding-3-small) | ~$0.50-1 |
-| **Total** | **~$3-6** |
+| Chat completions (gpt-5.4-mini) | variable |
+| Embeddings (text-embedding-3-large) | variable |
+| **Total** | **Track with your chosen provider's pricing page** |
 
 Using Ollama: **$0** (runs locally)

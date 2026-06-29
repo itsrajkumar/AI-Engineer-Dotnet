@@ -45,8 +45,8 @@ graph TD
     TR --> B[Encoder-only - BERT]
     TR --> G[Decoder-only - GPT]
     
-    GenAI --> LLM[Large Language Models - GPT-4, Claude]
-    GenAI --> SLM[Small Language Models - Phi-3, Llama 3]
+    GenAI --> LLM[Large Language Models - GPT-5, Claude 4, Gemini 2.5]
+    GenAI --> SLM[Small Language Models - Phi-4 Mini, Llama 3.3]
     GenAI --> IMG[Image Generation - DALL-E]
 ```
 
@@ -91,14 +91,14 @@ Your existing .NET skills handle everything else: dependency injection, configur
 ## 🔤 Large Language Models (LLMs) vs. Small Language Models (SLMs)
 
 ### LLMs — The Heavy Hitters
-- **Examples:** GPT-5, GPT-5-mini, Claude 3.5 Sonnet, Gemini 2.0
+- **Examples:** GPT-5.4-mini, GPT-5.4, Claude 4 Sonnet, Gemini 2.5 Pro
 - **Parameters:** 100B+ parameters
 - **Hosting:** Cloud-only (too large for local machines)
 - **Strengths:** Best reasoning, code generation, multi-step tasks
 - **Cost:** $ per API call
 
 ### SLMs — The Efficient Alternatives
-- **Examples:** Phi-4 Mini (Microsoft), Llama 3.1 8B (Meta), Mistral 7B
+- **Examples:** Phi-4 Mini (Microsoft), Llama 3.3 8B (Meta), Mistral Small 3
 - **Parameters:** 1B-13B parameters
 - **Hosting:** Can run locally on a good laptop/desktop
 - **Strengths:** Fast, private, cheap; good for focused tasks
@@ -116,7 +116,7 @@ Decision Tree:
                            ▼       ▼
                     ┌──────────┐  ┌──────────────────┐
                     │ Use LLM  │  │ Is data privacy   │
-                    │ (GPT-4o) │  │ a concern?        │
+                    │ (GPT-5.4) │  │ a concern?        │
                     └──────────┘  └──┬─────────┬─────┘
                                 Yes │         │ No
                                     ▼         ▼
@@ -157,9 +157,8 @@ Tokens: ["Microsoft", ".", "Extensions", ".", "AI"]   → 5 tokens
 
 ```csharp
 // You pay per token for API calls
-// GPT-4o-mini pricing (as of 2024):
-// Input:  $0.15 per 1M tokens
-// Output: $0.60 per 1M tokens
+// Pricing varies by provider and deployment.
+// Track token usage, latency, and quality together instead of assuming a fixed rate.
 
 // Example cost calculation:
 var inputTokens = 500;   // Your prompt
@@ -174,7 +173,7 @@ var costUsd = (inputTokens * 0.15 / 1_000_000) + (outputTokens * 0.60 / 1_000_00
 // Using Microsoft.ML.Tokenizers
 using Microsoft.ML.Tokenizers;
 
-var tokenizer = TiktokenTokenizer.CreateForModel("gpt-4o");
+var tokenizer = TiktokenTokenizer.CreateForModel("gpt-5.4-mini");
 var tokens = tokenizer.CountTokens("Hello, how are you?");
 Console.WriteLine($"Token count: {tokens}"); // Output: 6
 ```
@@ -187,11 +186,12 @@ The context window is the **maximum number of tokens** the model can process in 
 
 | Model | Context Window | Approximate Pages |
 |-------|---------------|-------------------|
-| GPT-4o-mini | 128K tokens | ~200 pages |
-| GPT-4o | 128K tokens | ~200 pages |
-| Claude 3.5 Sonnet | 200K tokens | ~300 pages |
-| Llama 3.1 8B | 128K tokens | ~200 pages |
-| Phi-3 Mini | 4K-128K tokens | Varies |
+| GPT-5.4-mini | 128K+ tokens | ~200+ pages |
+| GPT-5.4 | 128K+ tokens | ~200+ pages |
+| Claude 4 Sonnet | 200K tokens | ~300 pages |
+| Gemini 2.5 Pro | 1M tokens | ~1,500 pages |
+| Llama 3.3 8B | 128K tokens | ~200 pages |
+| Phi-4 Mini | 128K tokens | ~200 pages |
 
 ### .NET Analogy
 ```csharp
@@ -327,7 +327,7 @@ graph TD
     end
 
     subgraph Foundation Models
-        LLM((Pre-trained LLMs & SLMs<br/>GPT-4o, Llama 3, Phi-3))
+        LLM((Pre-trained LLMs & SLMs<br/>GPT-5.4, Llama 3.3, Phi-4 Mini))
         embed((Embedding Models))
     end
     

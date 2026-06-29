@@ -22,10 +22,10 @@ By the end of this week, you will:
 | Day | Topic | Type | Time |
 |-----|-------|------|------|
 | 1 | [Agentic Architecture & Patterns](./Day-01-Agentic-Architecture/README.md) | 📖 Theory | ~3 hrs |
-| 2 | [SK Planners → MAF Agents](./Day-02-SK-Planners-to-MAF/README.md) | 💻 Code | ~3 hrs |
+| 2 | [SK Planners → MAF Agents](../Week-06-Autonomous-AI-Agents/Day-02-SK-Planners/README.md) | 💻 Code | ~3 hrs |
 | 3 | [Multi-Agent Workflows](./Day-03-Multi-Agent-Workflows/README.md) | 💻 Code | ~3 hrs |
 | 4 | [Model Context Protocol (MCP)](./Day-04-Model-Context-Protocol/README.md) | 💻 Code | ~3 hrs |
-| 5 | [Human-in-the-Loop & Agent Safety](./Day-05-Human-in-the-Loop/README.md) | 💻 Code | ~3 hrs |
+| 5 | [Human-in-the-Loop & Agent Safety](../Week-06-Autonomous-AI-Agents/Day-04-Human-in-the-Loop/README.md) | 💻 Code | ~3 hrs |
 
 ---
 
@@ -65,7 +65,7 @@ What are you building?
 │   collaborate?                    Round-robin conversations
 │
 └── External tool ────────────────► MCP Protocol (Day 4)
-    integration?                    Standardized tool discovery
+    integration?                    Standardized tool discovery and connector reuse
 ```
 
 ---

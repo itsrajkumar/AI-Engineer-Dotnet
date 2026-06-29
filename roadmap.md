@@ -2,7 +2,7 @@
 
 > **A strategic overview of the 10-week journey to mastering AI engineering within the .NET 10 ecosystem.**
 >
-> 🆕 *v3.0 — Expanded to 10 Weeks (50 Days) — Includes MEAI Deep Dive, Multimodal AI, MCP, AI Testing, Production Engineering, and MAF*
+> 🆕 *v3.1 — Refreshed for 2026: current Microsoft Foundry guidance, GPT-5-class models, richer evaluation, MCP, and the Microsoft Agent Framework*
 
 ---
 
@@ -37,9 +37,9 @@ graph TD
     subgraph W3["Week 3: Advanced Techniques 🆕"]
         W3D1["Day 1: Multimodal AI<br/>Vision & Image Analysis"]
         W3D2["Day 2: Local Models<br/>Ollama & Hybrid Fallback"]
-        W3D3["Day 3: Fine-Tuning<br/>LoRA & Decision Matrix"]
-        W3D4["Day 4: Advanced Prompting<br/>ReAct, Tree-of-Thought"]
-        W3D5["Day 5: AI Evaluation<br/>LLM-as-Judge"]
+        W3D3["Day 3: Fine-Tuning<br/>LoRA, QLoRA & Model Adaptation"]
+        W3D4["Day 4: Advanced Prompting<br/>ReAct, Tree-of-Thought, Self-Consistency"]
+        W3D5["Day 5: AI Evaluation<br/>Datasets, Judges & Regression Testing"]
         W3D1 --> W3D2 --> W3D3 --> W3D4 --> W3D5
     end
     
@@ -68,10 +68,10 @@ graph TD
     W5 --> W6
     
     subgraph W6["Week 6: Vector Storage"]
-        W6D1["Day 1: Vector DB Theory<br/>ANN Algorithms, HNSW"]
-        W6D2["Day 2: MongoDB Atlas<br/>$vectorSearch Pipeline"]
+        W6D1["Day 1: Vector DB Theory<br/>ANN Algorithms, HNSW, Filtering"]
+        W6D2["Day 2: MongoDB Atlas<br/>$vectorSearch + Retrieval Pipelines"]
         W6D3["Day 3: PostgreSQL pgvector<br/>SQL + Vector Search"]
-        W6D4["Day 4: Hybrid Search<br/>Keyword + Semantic"]
+        W6D4["Day 4: Hybrid Search<br/>Keyword + Semantic + Reranking"]
         W6D5["Day 5: Repository Pattern<br/>IVectorRepository"]
         W6D1 --> W6D2 --> W6D3 --> W6D4 --> W6D5
     end
@@ -80,10 +80,10 @@ graph TD
     
     subgraph W7["Week 7: RAG Pipeline"]
         W7D1["Day 1: RAG Architecture<br/>Ingestion + Query Pipelines"]
-        W7D2["Day 2: Retrieval Step<br/>Question → Vector → Search"]
-        W7D3["Day 3: Augmentation Step<br/>Context Injection Prompt"]
+        W7D2["Day 2: Retrieval Step<br/>Query Rewrite → Retrieve → Rerank"]
+        W7D3["Day 3: Augmentation Step<br/>Context Injection + Citations"]
         W7D4["Day 4: End-to-End RAG<br/>Complete Implementation"]
-        W7D5["Day 5: Edge Cases<br/>Fallbacks, Security, Logging"]
+        W7D5["Day 5: Edge Cases<br/>Fallbacks, Security, Grounding Checks"]
         W7D1 --> W7D2 --> W7D3 --> W7D4 --> W7D5
     end
     
@@ -102,9 +102,9 @@ graph TD
     
     subgraph W9["Week 9: Production Engineering 🆕"]
         W9D1["Day 1: AI Web APIs<br/>Streaming SSE Endpoints"]
-        W9D2["Day 2: Observability<br/>OpenTelemetry & Cost Tracking"]
-        W9D3["Day 3: Content Safety<br/>PII Redaction & Guards"]
-        W9D4["Day 4: AI Testing<br/>Mock IChatClient & Eval"]
+        W9D2["Day 2: Observability<br/>OpenTelemetry, Metrics & Cost Tracking"]
+        W9D3["Day 3: Content Safety<br/>PII Redaction, Guardrails & Policy"]
+        W9D4["Day 4: AI Testing<br/>Mock IChatClient, Eval & Regression"]
         W9D5["Day 5: .NET 10 Migration<br/>Before/After Patterns"]
         W9D1 --> W9D2 --> W9D3 --> W9D4 --> W9D5
     end
@@ -112,9 +112,9 @@ graph TD
     W9 --> W10
     
     subgraph W10["Week 10: Responsible AI & Capstone 🆕"]
-        W10D1["Day 1: Responsible AI<br/>6 Principles & Checklist"]
-        W10D2["Day 2: Bias Detection<br/>Fairness Metrics & Testing"]
-        W10D3["Day 3: AI Security<br/>OWASP LLM Top 10"]
+        W10D1["Day 1: Responsible AI<br/>6 Principles, Traceability & Reviews"]
+        W10D2["Day 2: Bias Detection<br/>Fairness Metrics, Datasets & Testing"]
+        W10D3["Day 3: AI Security<br/>OWASP LLM Top 10, Prompt Injection"]
         W10D4["Day 4: Capstone Setup<br/>Architecture & Docker"]
         W10D5["Day 5: Capstone Build<br/>Deploy & Portfolio"]
         W10D1 --> W10D2 --> W10D3 --> W10D4 --> W10D5
@@ -178,23 +178,23 @@ graph TD
 | MEAI abstraction layer | Week 2 🆕 | Provider-agnostic AI code |
 | Streaming & structured output | Week 2 🆕 | Real-time UX, data extraction |
 | Middleware composition | Week 2 🆕 | Production AI pipelines |
-| Multimodal AI (Vision) | Week 3 🆕 | Image analysis, accessibility |
-| Local model deployment | Week 3 🆕 | Privacy, cost savings |
+| Multimodal AI (Vision) | Week 3 🆕 | Image analysis, document understanding |
+| Local model deployment | Week 3 🆕 | Privacy, cost savings, on-device AI |
 | Advanced prompting (ReAct) | Week 3 🆕 | Agentic AI reasoning |
-| AI evaluation | Week 3 🆕 | Quality assurance for AI |
+| AI evaluation | Week 3 🆕 | Quality assurance, rubrics, regression suites |
 | AI orchestration (SK) | Week 4 | Enterprise AI apps |
 | Plugin development | Week 4 | Extending AI capabilities |
 | Embeddings | Week 5 | Search, recommendations |
 | Vector databases | Week 6 | RAG, similarity search |
 | RAG pipelines | Week 7 | #1 enterprise AI pattern |
-| Agent development (MAF) | Week 8 🆕 | Next-gen AI applications |
+| Agent development (MAF) | Week 8 🆕 | Production agent orchestration |
 | MCP integration | Week 8 🆕 | Universal tool connectivity |
 | Multi-agent workflows | Week 8 🆕 | Complex orchestration |
 | Production AI APIs | Week 9 🆕 | Shipping AI to production |
-| AI observability | Week 9 🆕 | Cost tracking, monitoring |
+| AI observability | Week 9 🆕 | Cost tracking, tracing, monitoring |
 | AI testing & evaluation | Week 9 🆕 | Reliable AI deployments |
 | Content safety | Week 9 🆕 | Enterprise compliance |
 | Responsible AI | Week 10 🆕 | Required for production |
-| Bias detection | Week 10 🆕 | Fairness & ethics |
+| Bias detection | Week 10 🆕 | Fairness, audits & ethics |
 | AI security (OWASP) | Week 10 🆕 | Enterprise safety |
 | Clean Architecture | Capstone | Production .NET |
