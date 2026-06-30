@@ -162,6 +162,7 @@ Setup your development environment, Azure account, and required tools.
 | 3 | [Content Safety & Guardrails](./Week-09-Production-AI-Engineering/Day-03-Content-Safety-and-Guardrails/README.md) | 💻 Code |
 | 4 | [AI Testing & Evaluation](./Week-09-Production-AI-Engineering/Day-04-AI-Testing-and-Evaluation/README.md) | 💻 Code |
 | 5 | [.NET 10 Migration Guide](./Week-09-Production-AI-Engineering/Day-05-DotNet10-Migration-Guide/README.md) | 📖 Theory + Code |
+| **6** | **[🆕 Hybrid LLM Strategy](./Week-09-Production-AI-Engineering/Day-06-Hybrid-LLM-Strategy/README.md)** | **🏗️ Architecture + Code** |
 
 ### 🆕 [Week 10: Responsible AI & Capstone](./Week-10-Responsible-AI-and-Capstone/README.md)
 | Day | Topic | Type |
@@ -305,6 +306,7 @@ Use this checklist to track your progress:
 - [ ] **Week 9, Day 3** — Content Safety & Guardrails 🆕
 - [ ] **Week 9, Day 4** — AI Testing & Evaluation 🆕
 - [ ] **Week 9, Day 5** — .NET 10 Migration Guide 🆕
+- [ ] **Week 9, Day 6** — Hybrid LLM Strategy (Cloud-to-Local Migration) 🆕
 <!-- Week 10 (NEW) -->
 - [ ] **Week 10, Day 1** — Responsible AI Principles
 - [ ] **Week 10, Day 2** — Bias Detection & Fairness 🆕

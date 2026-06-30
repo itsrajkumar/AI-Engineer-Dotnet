@@ -40,6 +40,7 @@ Cloud Models:                     Local Models:
 | Maximum quality needed | ☁️ Cloud (GPT-5, Claude) |
 | Production at scale | ☁️ Cloud (managed infra) |
 | Cost-sensitive production | 🔄 Hybrid (local + cloud fallback) |
+| Progressive cloud-to-local migration | 🔄 Hybrid + Fine-Tuning (see below) |
 
 ---
 
@@ -175,6 +176,19 @@ Console.WriteLine("\n✅ Local models demo complete!");
 | **mistral-small-4** | 22B | ~8GB | Complex reasoning | 🔷 Medium |
 | **phi4-multimodal** | 4B | ~2.5GB | Image/audio analysis | ⚡ Fast |
 | **bge-m3** | 567M | ~1.1GB | Embeddings (multilingual)| ⚡⚡ Very fast |
+
+---
+
+## 🔄 The Hybrid LLM Strategy (Production Preview)
+
+The simple local/cloud fallback shown above is just the beginning. In a real production system, the strategy goes much deeper:
+
+1. **Intelligent Routing:** A middleware automatically decides *per-request* whether to use local or cloud based on complexity, data sensitivity, cost budget, and latency requirements.
+2. **Data Flywheel:** Every cloud API response is logged to a local database alongside user feedback (thumbs up/down).
+3. **Progressive Distillation:** Those high-quality cloud responses become training data. You fine-tune your local model using LoRA (see [Week 12](../../Week-12-Model-Training-and-Alignment/README.md)) so it gradually learns to produce cloud-quality answers.
+4. **Gradual Migration:** Over weeks/months, your local model improves. You route more and more traffic locally. Cloud API costs drop 80-90%.
+
+> 📖 **Deep Dive:** For the full architecture, C# code, EF Core logging schema, and the 4-phase migration roadmap, see **[Week 9, Day 6: Hybrid LLM Strategy](../../Week-09-Production-AI-Engineering/Day-06-Hybrid-LLM-Strategy/README.md)**.
 
 ---
 

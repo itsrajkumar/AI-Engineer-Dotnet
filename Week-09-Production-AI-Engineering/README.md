@@ -24,6 +24,7 @@ By the end of this week, you will:
 | 3 | [Content Safety & Guardrails](./Day-03-Content-Safety-and-Guardrails/README.md) | 💻 Code | ~3 hrs |
 | 4 | [AI Testing & Evaluation](./Day-04-AI-Testing-and-Evaluation/README.md) | 💻 Code | ~3 hrs |
 | 5 | [.NET 10 Migration Guide](./Day-05-DotNet10-Migration-Guide/README.md) | 📖 Theory + Code | ~3 hrs |
+| **6** | **[🆕 Hybrid LLM Strategy](./Day-06-Hybrid-LLM-Strategy/README.md)** | **🏗️ Architecture + Code** | **~4 hrs** |
 
 ---
 

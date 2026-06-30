@@ -169,6 +169,48 @@ Response (inner → outer)
 
 ---
 
+---
+
+## 🧠 Advanced: Intelligent Routing Middleware
+
+One of the most powerful uses of the middleware pattern is **routing requests to different models** based on the content of the prompt. This is the foundation of the **Hybrid LLM Strategy** — using a cheap local model for simple tasks and a powerful cloud model for complex ones.
+
+```csharp
+/// <summary>
+/// Routes simple queries to local Ollama, complex queries to cloud API.
+/// </summary>
+public class ComplexityRoutingMiddleware : DelegatingChatClient
+{
+    private readonly IChatClient _cloudClient;
+
+    public ComplexityRoutingMiddleware(
+        IChatClient localClient,
+        IChatClient cloudClient) : base(localClient)
+    {
+        _cloudClient = cloudClient;
+    }
+
+    public override Task<ChatResponse> GetResponseAsync(
+        IEnumerable<ChatMessage> messages,
+        ChatOptions? options = null,
+        CancellationToken ct = default)
+    {
+        // Estimate complexity from prompt length and conversation depth
+        var userText = messages.LastOrDefault(m => m.Role == ChatRole.User)?.Text ?? "";
+        var isComplex = userText.Length > 500 || messages.Count() > 6;
+
+        // Route to the appropriate model — transparently!
+        return isComplex
+            ? _cloudClient.GetResponseAsync(messages, options, ct)
+            : base.GetResponseAsync(messages, options, ct); // local
+    }
+}
+```
+
+> 📖 **Deep Dive:** For the full production implementation with PII detection, cost budgets, data logging, and progressive model training, see **[Week 9, Day 6: Hybrid LLM Strategy](../../Week-09-Production-AI-Engineering/Day-06-Hybrid-LLM-Strategy/README.md)**.
+
+---
+
 ## 🔑 Key Takeaways
 
 | Concept | Details |

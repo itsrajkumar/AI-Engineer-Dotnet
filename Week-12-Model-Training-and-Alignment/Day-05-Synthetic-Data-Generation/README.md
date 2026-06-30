@@ -112,6 +112,36 @@ Injecting diverse personas into the generation prompt forces the Teacher model t
 
 ---
 
+---
+
+## 🔄 Production Distillation: The Cloud-to-Local Pipeline
+
+The synthetic data generator above runs offline — you manually run a script to generate data. But in a live production system, there's an even more powerful approach: **your cloud API is already generating perfect training data every time a real user asks a question.**
+
+### The Insight
+
+Every time your application routes a complex query to Claude or GPT-5, the cloud model produces a high-quality response. If you log that interaction (prompt + response + user feedback) to a local database, you are *automatically* building a fine-tuning dataset — one that is perfectly tailored to your users' actual needs, not synthetic hypotheticals.
+
+### The Production Pipeline
+
+```
+Real User → Cloud API answers → Log to PostgreSQL → Quality Judge scores it
+                                                     ↓
+                                              Export top 85%+ as JSONL
+                                                     ↓
+                                              LoRA fine-tune local model
+                                                     ↓
+                                              Route MORE traffic to local
+                                                     ↓
+                                              Cloud costs drop 80-90%
+```
+
+This is called the **Data Flywheel** — the more your app is used, the better your local model gets, the less you need the cloud.
+
+> 📖 **Full Implementation:** For the complete C# code (EF Core logging schema, `IChatClient` routing middleware, quality judge background worker, JSONL exporter, and the 4-phase migration roadmap), see **[Week 9, Day 6: Hybrid LLM Strategy](../../Week-09-Production-AI-Engineering/Day-06-Hybrid-LLM-Strategy/README.md)**.
+
+---
+
 ## 🔑 Key Takeaways
 
 - **Synthetic Data** allows you to build custom, specialized models in hours instead of months.
